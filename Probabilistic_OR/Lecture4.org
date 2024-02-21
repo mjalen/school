@@ -1,0 +1,49 @@
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [a4paper, 10pt]
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry} 
+#+LATEX_HEADER: \usepackage{amsmath,amsthm,amssymb,tensor,physics}
+#+LATEX_HEADER: \usepackage{setspace,multicol,tasks}
+#+LATEX_HEADER: \usepackage[shortlabels]{enumitem}
+#+LATEX_HEADER: \usepackage{fancyhdr}
+#+LATEX_HEADER: \usepackage{graphicx,hyperref}
+#+LATEX_HEADER: \setcounter{secnumdepth}{0}
+#+LATEX_HEADER: \setcounter{tocdepth}{2}
+#+title: MATH 4310: Lecture 4 
+#+author: Jalen Moore
+
+- PowerPoints:
+  - *Minimizing Expected Cost News Vendor Problem*
+  - *Decision Making with Experimentation*
+
+* News Vendor Problem
+
+*NOTE*: The following is needed for /Project 1/.
+
+Properties
+- Demand is a CDF.
+- Costs follow a specific structure. 
+- Purchase quantity minimizes expected cost by a simple expression. 
+
+Let $c_o$  be the /overage/ cost, $c_u$ be the /underage/ cost. Let $Q$ be the quantity purchased with an actual demand $D$ with the CDF $F$ generated from past hurricane (/?/) data. Then, the optimal $Q^*$ is derived from the following.
+
+\( F(Q^*) = \frac{c_u}{c_u + c_o} \)
+
+* Experimentation 
+
+** Posterior Probability 
+
+Denote each state of nature as $i$ and each possible experimental finding $j$. The probability that a test result $j$ occurs given a state $i$ is $P(j|i)$.
+
+We truly want the opposite, however. We want the /posterior/ probability of a state $i$ given a test result $j$; $P(i|j)$. This can be done with Baye's Theorem.
+
+\begin{align*}
+  P(i|j) = \frac{P(i) \cdot P(i \cap j)}{P(j)}.
+\end{align*}
+
+Furthermore,
+
+\begin{align*}
+  P(i|j) &= \frac{P(j|i)\cdot P(i)}{\sum_{k=1}^n P(j|k)P(k)}.
+\end{align*}
+
+Note here that $k$ represents each *state of nature*, and $j$ represents the experiment result. $i$ is the /desired/ state of nature.

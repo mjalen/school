@@ -1,0 +1,74 @@
+#+title: Lecture 7
+#+author: Jalen Moore
+
+* Homework
+
+- Assume purchasing all 100 stocks at once
+
+* Utility Theory
+** Idea
+
+Convert all units of payoff to a common unit using a /utility function/.
+
+- The idea behind our utility function increments is based on subjective values.
+
+** Utility Curves
+
+Typically have a range of $[0,1]$, $(-\infty, \infty)$, or $[0,\infty)$.
+
+*** Example
+
+Flip a fair coin.
+- If won, I get $1000.
+- If lost, I lose the money I bet.
+
+Let's say I am willing to pay $100 to play. Then my utility curve is
+
+\begin{align*}
+  U(\$0) &= 0;\\
+  U(\$1000) &= 1;\\
+  U(\$100) &= \frac{1}{2} U(\$0) + \frac{1}{2} U(\$1000) = 0.5. 
+\end{align*}
+
+My next breaking point that I am willing to bid is $300. Therefore,
+
+\begin{align*}
+  U(\$300) = \frac{1}{2} U(\$100) + \frac{1}{2} U(\$1000) = \frac{3}{4}.
+\end{align*}
+
+This forms a piecewise-linear function for our utility function:
+
+\begin{align*}
+  U(x) = \begin{cases}
+    \frac{1}{200} x & \text{for } 0 \le x \leq 100 \\
+    \frac{1}{800} x + \frac{3}{8} & \text{for } 100 \leq x \leq 300 \\
+    \frac{1}{2800} x + \frac{18}{28} & \text{for } 300 \leq x \leq 1000.
+    \end{cases}
+\end{align*}
+
+*** Example
+
+Pay $200 to flip a fair dice.
+- If roll 1, get $0.
+- If roll 2, get $100.
+- If roll 3 or 4, get $200.
+- If roll 5, get $500.
+- If roll 6, get $600.
+
+Using our utility function from the last example, $U(200) = 5/8$. Our /expected utility/ is $E[U(X)] = 0.5714$. 
+
+
+** Utility and Risk
+
+Three types of utility curves.
+- Risk Neutral (Linear Curve)
+- Risk Seeking (Exponential Curve)
+- Risk Adverse (Logarithmic Curve)
+
+Risk can be measured as the *probability that we are willing to lose* $\rightarrow p$.
+
+\begin{align*}
+  p\cdot U(m) + (1-p) U(M) = U(x_1).
+\end{align*}
+
+Where $x_1$ is our first bid or breaking point.

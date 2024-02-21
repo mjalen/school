@@ -1,0 +1,58 @@
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [a4paper, 10pt]
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry} 
+#+LATEX_HEADER: \usepackage{amsmath,amsthm,amssymb,tensor,physics}
+#+LATEX_HEADER: \usepackage{setspace,multicol,tasks}
+#+LATEX_HEADER: \usepackage[shortlabels]{enumitem}
+#+LATEX_HEADER: \usepackage{fancyhdr}
+#+LATEX_HEADER: \usepackage{graphicx,hyperref}
+#+LATEX_HEADER: \setcounter{secnumdepth}{0}
+#+OPTIONS: toc:nil
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+title: Homework 2 - MATH 4200 
+#+author: Jalen Moore
+
+* Notes                                                            :noexport:
+From Canvas:
+
+These problems can be solved by hand:
+- 2.1#12;
+- 2.2# 25;
+- 2.3# 2, 4, 30;
+- 2.4#10
+
+Use a computer:
+- 2.1#16,
+- 2.3#22
+
+you can either do it by hand or use a computer
+- 2.2# 5
+
+Solve by hand. Use a computer to find the approximation
+- 2.2#10 *Use initial guess $p_0 = 1$*.
+
+For 2.4#13* show that $g(p)=p$, $g’(p)=g’’(p)=0$ and use $p_0=\pi/4$ and $f(x)=x-cos(x)$ to find $p_5$ using this method . Compare the approximations with those given in Examples 1 and 2 from section 2.3 i.e., compare this method with Newton’s method (use $p_0=pi/4$ )  and Secant method (use $p_0=0.5$ and $p_1=  pi/4$). 
+
+Note: You may write your own code or use the codes available on Canvas.
+
+* Section 2.1
+** Exercise 2.1#12
+** Exercise 2.1#16
+** Exercise 2.1#18
+* Section 2.2
+** Exercise 2.2#5
+** Exercise 2.2#10
+** Exercise 2.2#25
+* Section 2.3
+** Exercise 2.3#2
+** Exercise 2.3#4
+** Exercise 2.3#22
+** Exercise 2.3#30
+* Section 2.4
+** Exercise 2.4#1A
+** Exercise 2.4#3A
+** Exercise 2.4#8
+** Exercise 2.4#10
+** Exercise 2.4#13
+
+

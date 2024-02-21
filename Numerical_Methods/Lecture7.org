@@ -1,0 +1,160 @@
+#+title: MATH 4200 Lecture 7
+#+author: Jalen Moore
+
+* Bisection Method Cont'd
+*** Advantages
+
+- Always converges.
+- Does not require any derivative of $f(x)$.
+
+*** Disadvantages
+
+- Slow. Converges at a rate of $p_n = p + O(1/2^n)$.
+- Cannot be used to find complex roots.
+- Fails when root has an even multiplicity: $(x-r)^{2k}$.
+- Cannot be used to solve systems of equations.
+
+*** Max Iterations
+
+Given the error
+
+\begin{align*}
+  | p_n - p | \leq \frac{b-a}{2^n} \leq Tol.
+\end{align*}
+
+Then,
+
+\begin{align*}
+  n \geq \frac{\ln{\frac{b-a}{Tol}}}{\ln{2}}
+\end{align*}
+
+Therefore, the maximum $n$ is the ceiling of the right-hand side.
+
+*** Example
+
+Consider $f(x) = x(x-1)(x-2)$. To which root does the bisection method converge to, given the interval $[a,b]=[-1,4]$?
+
+To find the answer, we must iterate a few times.
+1. $p_1 =1.5$, therefore $[a_2,b_2] = [1.5,4]$.
+
+After the first iteration, it is clear that only the root $x=2$ can result from bisection method given the interval.
+
+
+    
+
+
+
+*** Port to Python
+
+The following is a port of the MatLab script on canvas to Python
+
+#+begin_src python
+  # debug this code, this was a rough port during class
+  def BisectionMethod(a, b, tol):
+      f = lambda x: (x ** 2) - 2
+      n = 0
+      p = 0 
+
+      if f(a) * f(b) > 0:
+          raise Exception('Function has the same sign at both endpoints')
+
+      Nmax = ceil(log((b-a)/tol)/log(2))
+
+      for n in range(0, Nmmax):
+          p = (a + b) / 2
+          e = abs(f(p))
+
+          if f(p) == 0 or e < tol:
+              break
+
+          if f(a) * f(b) < 0:
+              b = p
+          else:
+              a = p
+
+      r = p
+      e = abs(f(r))
+#+end_src
+
+* Fixed Point Iteration
+
+** Definition
+
+A number is a fixed point for $g(x)$ if $g(p)=p$.
+
+*** Example
+
+Consider $g(x)=x^2-6$. Then, $p=p^2-6$ such that $p^2-p-6=0$. Clearly there are two fixed points $p=-2$ and $p=3$.
+
+** Fixed Point Problem
+
+*** Definition
+
+Find $p$ s.t. $p=g(p)$.
+
+*** Connection to Root Finding Pb.
+
+Equilvalent problems in the sense:
+
+1. Given $f(p)=0$, there are many $g$ with fixed pts at $p$. (ie. $g(x) = x - f(x)$, which extends to $g(x) = x + kf(x)$ for any constant $k$). 
+   - Consider Newton's method, $g(x) = x - f(x)/f'(x)$ given $f'(p)\neq0$.
+2. Conversely, if $g$ has a fixed pt at $x=p$, then $f(x)=x-g(x)$ has a root at $x=p$.
+
+*** Goal
+
+Start with $f(x)=0$. Rewrite it as $x=g(x)$ where the *best* $g(x)$ is chosen (fastest convergence) (there are many cases for $g(x)$).
+
+Certain fixed point choices lead to very powerful root-finding techniques.
+
+**** Example
+
+\begin{align*}
+  f(x) &= x^2 - 2x -3 = 0,\\
+  x &= \frac{x^2-3}{2} = g_1(x).
+\end{align*}
+
+There are many other $g(x)$ that can be found here.
+
+*** Theorem
+
+(Sufficient Conditions for the Existence and Uniqueness of a Fixed Point). 
+
+1. If a function $g\in C[a,b]$ and $g(x) \in [a,b]$, $\forall x \in [a,b]$; then $g$ has a fixed point in $[a,b]$.
+2. If, in addition, $g'(x)$ exists on $(a,b)$ and there exists a number $k\in (0,1)$ s.t.
+
+   \begin{align*}
+     |g'(x)| \leq k < 1, \forall x \in [a,b];
+   \end{align*}
+
+   then $g(x)$ has a unique fixed solution.
+
+**** Example
+
+Prove that the following function has a unique fixed point $p\in [0,1]$
+
+\begin{align*}
+  g(x) = \frac{2+x - e^x}{3}.
+\end{align*}
+
+- Clearly $g\in C[0,1]$.
+- $g(x) \in [0,1]$ for all $x\in[0,1]$.
+
+To show the second statement, the derivative must be used to find the min/max. This results in $g(x)\in [ (3-e)/3, 1/3 ]$. So, $g$ has at least one fixed point in $[0,1]$. The same must be done to prove the first derivative is bounded by $1$ by finding the maximum $k$.
+
+
+** Iteration
+
+Consider $x=g(x)$. To approximate $x$, we use the fixed point iteration.
+
+- Choose a guess $p_0$ in the given interval.
+- Generate the sequence: $p_n=g(p_{n-1})$ for $n=1,2,3, \ldots$ 
+
+If $\{p_n\}$ converges to $p$, then
+
+\begin{align*}
+  p = \lim_{n\rightarrow\infty} p_n &= \lim_{n\rightarrow\infty} g(p_{n-1}),\\
+  &= g(\lim_{n-1} p_{n-1} ),\\
+  &= g(p).
+\end{align*}
+
+Therefore, $p$ is a fixed point for $g$.

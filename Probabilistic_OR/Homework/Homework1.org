@@ -1,0 +1,256 @@
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [a4paper, 10pt]
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry}
+#+LATEX_HEADER: \usepackage{amsmath,amsthm,amssymb,tensor,physics}
+#+LATEX_HEADER: \usepackage{setspace,multicol,tasks}
+#+LATEX_HEADER: \usepackage[shortlabels]{enumitem}
+#+LATEX_HEADER: \usepackage{fancyhdr}
+#+LATEX_HEADER: \usepackage{graphicx,hyperref}
+#+LATEX_HEADER: \setcounter{secnumdepth}{0}
+#+OPTIONS: toc:nil
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+title: MATH 4310 Homework 1
+#+author: Jalen Moore
+
+* Question 1
+** Part A
+
+There are no alternatives that are dominated. Table 1 provides each possible pair of alternatives, which one is possibly dominant, and the inconsistency that makes that alternative not dominant.
+
+*Table 1: Alternative Pair Dominantion Inconsistencies*
+| Pair | Possibly Dominant | Inconsistent State |
+|------+-------+-------|
+| Conservative/Speculative | Speculative | Worsening; $-30 < -10$ |
+| Conservative/Counter-Cyclical | Conservative | Worsening; $-10 < 15$ |
+| Speculative/Counter-Cyclical | Speculative | Worsening; $-30 < 15$|
+
+** Part B
+*** Maximum Likelihood (Speculative)
+
+A stable economy is most probable, resulting in the best payoff with a speculative investment.
+
+*** Maximum Expected Value (Counter-Cyclical)
+
+The expected payoff of each alternative is the following.
+
+\begin{align*}
+  E[\text{Conservative}] &= 0.1 (30) + 0.5 (5) - 0.4 (10) = \$ 1.5 \text{ million};\\
+  E[\text{Speculative}] &= 0.1 (40) + 0.5 (10) - 0.4 (30) = - \$ 3 \text{ million};\\
+  E[\text{Counter-Cyclical}] &= -0.1 (10) + 0.5 (0) + 0.4 (15) = \$ 5 \text{ million}.
+\end{align*}
+
+Thus, the maximum expected value results in a counter-cyclical investment.
+
+*** Maximum Expectation - Variance (Counter-Cyclical)
+
+Given the variance formula $\sigma_X^2 = E[X^2] - E[X]^2$, the risk/variance for each alternative is the following.
+
+\begin{align*}
+  \sigma_{\text{Conservative}}^2 &= \left[ 0.1 (30)^2 + 0.5 (5)^2 + 0.4 (-10)^2 \right] - (1.5)^2 = \$ 140.25  \text{ million};\\
+  \sigma_{\text{Speculative}}^2 &= \left[ 0.1 (40)^2 + 0.5 (10)^2 + 0.4 (-30)^2 \right] - (-3)^2 = \$ 561 \text{ million};\\
+  \sigma_{\text{Counter-Cyclical}}^2 &= \left[ 0.1 (-10)^2 + 0.5 (0)^2 + 0.4 (15)^2 \right] - (5)^2 = \$ 75\text{ million}.
+\end{align*}
+
+Then, the expectation minus variance of each alternative is the following.
+
+\begin{align*}
+  Q[\text{Conservative}] &= 1.5 - 140.25 = - 138.75;\\
+  Q[\text{Speculative}] &= -3 - 561 = -564;\\
+  Q[\text{Counter-Cyclical}] &= 5 - 75 = -70.
+\end{align*}
+
+Thus, the maximum expectation minus variance results in a counter-cyclical investment.
+
+*** Maximin (Counter-Cyclical)
+
+Maximizing the minimum payoff results in either a conservative or a counter-cyclical investment.
+
+*** Minimax Regret (Conservative)
+
+The regret of each payoff results in the following table.
+
+   |                   | Improving | Stable | Worsening |            |
+   |-------------------+-----------+--------+-----------+------------|
+   | Prior Probability |       0.1 |    0.5 |       0.4 | Max Regret |
+   |-------------------+-----------+--------+-----------+------------|
+   | Conservative      |        10 |      5 |        25 |         25 |
+   | Speculative       |         0 |      0 |        45 |         45 |
+   | Counter-Cyclical  |        50 |     10 |         0 |         50 |
+
+Clearly from the above table, to minimize the maximum regret, a conservative investment should be made.
+
+* Question 2
+** Part A
+
+Given that a the probability of a stable economy is $0.3$ and a worsening economy is $0.6$, the new expected payoffs are the following.
+
+\begin{align*}
+  E[\text{Conservative}] &= 0.1 (30) + 0.3 (5) - 0.6 (10) = - \$ 4.5 \text{ million};\\
+  E[\text{Speculative}] &= 0.1 (40) + 0.3 (10) - 0.6 (30) = - \$ 11 \text{ million};\\
+  E[\text{Counter-Cyclical}] &= -0.1 (10) + 0.3 (0) + 0.6 (15) = \$ 89 \text{ million}.
+\end{align*}
+
+Based on these values, a _counter-cyclical_ investment should be made.
+
+** Part B
+
+Given that a the probability of a stable economy is $0.7$ and a worsening economy is $0.2$, the new expected payoffs are the following.
+
+\begin{align*}
+  E[\text{Conservative}] &= 0.1 (30) + 0.7 (5) - 0.2 (10) = \$ 36 \text{ million};\\
+  E[\text{Speculative}] &= 0.1 (40) + 0.7 (10) - 0.2 (30) = \$ 5 \text{ million};\\
+  E[\text{Counter-Cyclical}] &= -0.1 (10) + 0.7 (0) + 0.2 (15) = \$ 29 \text{ million}.
+\end{align*}
+
+Based on these values, a _conservative_ investment should be made.
+
+** Part C
+
+Let $p_s$ be the crossover prior probability of a stable economy and $p_w$ be the crossover prior probability of a worsening economy. The expected payoff of a conservative and counter-cyclical yields the following equation.
+
+\begin{align*}
+  0 &= E[\text{Conservative}] - E[\text{Counter-Cyclical}],\\
+    &= 0.1(30) + 5 p_s - 10 p_w + 0.1 (10) - 0 p_s - 15 p_w,\\
+    &= 4 + 5 p_s - 25p_w.
+\end{align*}
+
+Furthermore, the expected value for a speculative investment completes the system of linear equations.
+
+\begin{align*}
+  5p_s - 25p_w &= -4;\\
+  p_s + p_w &= 0.9.
+\end{align*}
+
+The second equation provides $p_s = 0.9 - p_w$. Therefore, the first equation yields $p_w$.
+
+\begin{align*}
+  0 &= 4 + 5 \cdot (0.9 - p_w) - 25p_w,\\
+    &= 4 + 4.5 - 5p_w - 25p_w,\\
+    &=8.5 - 30p_w,\\
+    &= \frac{10}{5} \cdot (8.5 - 30p_w),\\
+    &= 17 - 60p_w.
+\end{align*}
+
+The second to last equation holds as the left-hand-side is zero. Thus, $p_w = 17 / 60$ and $p_s$ is found to be $p_s = 0.9 - (17/60)$ or $p_s = 37/60$.
+
+* TODO Question 3
+** Part A
+
+The expected payoffs of the alternatives are the following.
+
+\begin{align*}
+  E[A1] &= 0.4 (400) - 0.6 (100) = 100;\\
+  E[A2] &= 0.4 (0) + 0.6 (100) = 60.
+\end{align*}
+
+Thus, alternative 2 should be chosen.
+
+** Part B
+
+To find the expected value of perfect information (EVPI), the following values must be found.
+
+\begin{align*}
+  E[\text{Payoff w/ Perfect Info}] &= 0.4 \cdot 400 + 0.6 \cdot 100 = 220;\\
+  E[\text{Payoff w/o Experimentation}] = 100.
+\end{align*}
+
+Thus, the EVPI is $220 - 100$ or $EVPI=120$.
+
+** Part C
+
+Given the cost of experimentation is $100, it would be worthwhile to experiment. The cost of the research is less than the $EVPI$, therefore it is worthwhile to pay this cost.
+
+** Part D
+
+Let $Y$ be a binary random variable representing whether the true state of nature is accurately predicted (1) or not (0). The following probabilities are adapted from the given data.
+
+\begin{align*}
+  P(Y=1 | S1) = 0.6;\\
+  P(Y=0 | S1) = 0.4;\\
+  P(Y=1 | S2) = 0.8;\\
+  P(Y=0 | S2) = 0.2.
+\end{align*}
+
+Therefore, the joint probabilities are the following.
+
+\begin{align*}
+  P(Y=1 \cap S1) &= P(S1) \cdot P(Y=1 | S1) = 0.4 \cdot 0.6 = 0.24;\\
+  P(Y=0 \cap S1) &= P(S1) \cdot P(Y=0 | S1) = 0.4 \cdot 0.4 = 0.16;\\
+  P(Y=1 \cap S2) &= P(S2) \cdot (Y=1 | S2) = 0.6 \cdot 0.8 = 0.48;\\
+  P(Y=0 \cap S2) &= P(S2) \cdot (Y=0 | S2) = 0.6 \cdot 0.2 = 0.12.
+\end{align*}
+
+Finally, the posterior probabilities are the following.
+
+\begin{align*}
+  P(S1 | Y=1) &= \frac{P(S1 \cap Y=1)}{P(Y=1)} = \frac{0.24}{0.24 + 0.48} = \frac{1}{3} \approx 0.3333;\\
+  P(S2 | Y=1) &= \frac{P(S2 \cap Y=1)}{P(Y=1)} = \frac{0.48}{0.24 + 0.48} = \frac{2}{3} \approx 0.6667;\\
+  P(S1 | Y=0) &= \frac{P(S1 \cap Y=0)}{P(Y=0)} = \frac{0.16}{0.16 + 0.12} = \frac{4}{7} \approx 0.5714;\\
+  P(S2 | Y=0) &= \frac{P(S2 \cap Y=0)}{P(Y=0)} = \frac{0.12}{0.16 + 0.12} = \frac{3}{7} \approx 0.4286.
+\end{align*}
+
+** TODO Part E
+
+Assuming S1 is predicted, the expected value
+
+* TODO Question 4
+
+*NOTE* Save for when I can use inkscape.
+
+* TODO Question 5
+
+*NOTE* Save for when I can use inkscape.
+
+* Question 6
+** Part A
+
+The utility of each outcome is the following.
+
+\begin{align*}
+  U(10) = \sqrt{10 + 6} = 4;\\
+  U(19) = \sqrt{19 + 6} = 5;\\
+  U(30) = \sqrt{30 + 6} = 6.
+\end{align*}
+
+The expected utility of the cash gift is $E[U(\text{Cash})]=4$. The expected utility of an investment in /my/ name is the following.
+
+\begin{align*}
+  E[U(\text{Invest})] = 0.3 \cdot 4 + 0.7 \cdot 6 = 5.6.
+\end{align*}
+
+Thus, _investing_ maximizes /my/ expected utility.
+
+** Part B
+
+Assuming an unknown $U(M)$, the given utilities $U(19)=16.7$ and $U(30)=20$ provide the following slopes.
+
+\begin{align*}
+  m_1 &= \frac{16.7 - 0}{19 - 0} = \frac{167}{190};\\
+  m_2 &= \frac{20 - 16.7}{30 - 19} = \frac{33}{110} = \frac{3}{10}.
+\end{align*}
+
+Using point-slope form, the utility function for $0\leq M \leq 19$ and $19 \leq M \leq 30$ can be found.
+
+\begin{align*}
+  U(M) - 0 = \frac{167}{190} (M - 0) &\Rightarrow U(M) = \frac{167}{190} M;\\
+  U(M) - 16.7 = \frac{3}{10} (M - 19) &\Rightarrow U(M) = \frac{3}{10} M + 11.
+\end{align*}
+
+Therefore, the utility function for $0\leq M \leq 30$ is the following piecewise linear function.
+
+\begin{align*}
+  U(M) = \begin{cases}
+    0 & \text{ for } M \leq 0\\
+    \frac{167}{190} M & \text{ for } 0 \leq M \leq 19\\
+    \frac{3}{10} M + 11 & \text{ for } 0 \leq M \leq 30.
+    \end{cases}
+\end{align*}
+
+Thus, $U(10) = 167 / 19$.
+* Notes                                                            :noexport:
+
+\begin{align*}
+  EVPI &= E[\text{Payoff w/ Perfect Info}] - E[\text{Payoff w/o Experimentation}];\\
+  E[\text{Payoff w/ Perfect Info}] &= P(\text{oil}) \cdot V(\text{best alt}) + P(\text{no oil})\cdot V(\text{best alt});\\
+  E[\text{Payoff w/o Experimentation}] &= V(\text{best alt and state}).
+\end{align*}

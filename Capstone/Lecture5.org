@@ -1,0 +1,26 @@
+#+title: Lecture 5
+#+author: Jalen Moore
+
+* Requirements Engineering
+
+** Why?
+
+To understand what the client wants. Every employee may understand the project differently, but ultimately the product must be delivered as the client desires.
+
+** Functional Requirements
+
+Typically the system features.
+
+** Nonfunctional Requirements
+
+The different constraints of the system. Security, reliability, etc.
+
+** Scope 
+
+User vs. System requirements. In capstone, user requirements are typically the only one required, as the user is the one ultimately using the system. Common system requirements include middleware functions.
+
+** Process
+
+Iterative. Client explains what they want, we absorb and understand what they want. We implement prototypes, use cases, scenarios, partial implementations, or a description for the client to provide feedback.
+
+

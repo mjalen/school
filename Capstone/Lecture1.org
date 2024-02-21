@@ -1,0 +1,46 @@
+# Lecture 1
+
+## Principles of Computing
+
+- Computation
+- Communication
+- Coordination
+- Recollection
+- Automation
+- Evaluation
+- Design
+
+## Big Picture
+
+Leverage skills and knowledge to anaylze real world problems, with the goal of creating programs. 
+
+## Capstone Project
+
+Our capstone project may not be fully completed, but it is a proof of concept.
+
+Go beyond _CRUD_ (create, replace, update, delete? I believe). Make the project "smarter". The real-world is not always CRUD.
+
+### Project Requirements
+
+1. Must be developed as a team.
+2. A sponsor/client is required from commercial, non-profit, or academics.
+3. Expected to be more complex than CSCI 4830.
+
+## Teams
+
+- 3/4 members. Self organize. Typically easier when you have worked/have common interests with other people. Large teams (5+) can develop teammate problems.
+
+- Have a well-maintained project task tracker to avoid problem coordination.
+
+### Member Expectations
+
+Each member is expected to pitch in on all documentation, implementation, and testing. But, special roles should be filled:
+
+- Project manager: track schedule, coordinate/assign work.
+- Client Liaison: contact w/ sponsor/client.
+- Requirements Analyst: Major functional and nonfunctional requirements.
+- Architect/Technical lead: makes the major implementation decisions. 
+- Quality Assurance/Testing Lead: Put together strategy for testing.
+- Lead Researcher: coordinate online/scholary research needs.
+- Scribe: record meeting notes.
+

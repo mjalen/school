@@ -1,0 +1,29 @@
+# Lecture 2
+
+This class focuses on _good_ decision making. Furthermore, we focus on *decision analysis* models where we play against "nature". Nature is not necessarily an _adversary_, but some decisions have adversaries.
+
+Game theory is playing against an _intelligent_ opponent.
+
+Typically care about decisions of a professional nature.
+- ## Elements of Decision
+  
+  1. Alternatives.
+  2. Natural state and outcome.
+  3. Incentive/payoffs. What is the utility of a decision ($u\in [0,1]$)
+  4. Probabilties of natural state. A probability distribution for each outcome. There does occur times when there is no knowledge of probabilities.
+  
+  Probabilities are always associated with state of nature. It is easier to determine probability from a problem if you first determine the states.
+  
+  The probabilities and alternatives can form a matrix/table.
+  
+  Why do this? It is a method of making our problem specifics clear.
+- ## How do we make a desicion?
+  
+  Decisions can be biased based on the person. The outcomes of decisions can also be inconsistent.
+- ## Dominance
+- Dominates: Objectively better alternative for each state.
+- Weakly dominate: An alternative is better or equal to another alternative in each state.
+  
+  When dominance exists, you can simply get rid of the lesser alternative. In weak dominance, you _can potentially_ keep the lesser alternative depending on the problem.
+  
+  State dominance can exist as well.

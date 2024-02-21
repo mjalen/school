@@ -1,0 +1,49 @@
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [a4paper, 10pt]
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry} 
+#+LATEX_HEADER: \usepackage{amsmath,amsthm,amssymb,tensor,physics}
+#+LATEX_HEADER: \usepackage{setspace,multicol,tasks}
+#+LATEX_HEADER: \usepackage[shortlabels]{enumitem}
+#+LATEX_HEADER: \usepackage{fancyhdr}
+#+LATEX_HEADER: \usepackage{graphicx,hyperref}
+#+LATEX_HEADER: \setcounter{secnumdepth}{0}
+#+LATEX_HEADER: \setcounter{tocdepth}{2}
+#+title: MATH 4310: Lecture 4 
+#+author: Jalen Moore
+
+* Notes for project
+
+\begin{align*}
+  C_{(Q\geq D)} &= 1000Q;\\
+  C_{(Q< D)} &= 1000Q + 15000(D-Q). 
+\end{align*}
+
+The $D$ and $Q$ for the regrets are flipped. Weird, but it is what it is.
+
+\begin{align*}
+  \max \left{ 1000(Q-D), 14000(D-Q) \right};\\
+  1000(Q-D) = -1000(D-Q),\\
+  14000(D-Q) = -14000(Q-D).
+\end{align*}
+
+- Project submission is open until Monday. No penalty.
+
+* Decision Trees
+** Example (p. 5)
+
+See notebook. Drilling is the dominant alternative, as it has an expected payoff of $100K.
+
+- Remember to label each branch with the name of the alternative or state of nature.
+  - Also include probabilities.
+  - Use $//$ on the *dominated* branches, not the *dominator* branch.
+
+Now we include the thumper. Note: "closed: non-closed: no structure".
+
+| States of Nature | Prior Probabilities | Conditional Probabilities | Joint Probabilities | Posterior Probabilities |
+|------------------+---------------------+---------------------------+---------------------+-------------------------|
+| S1               |                 0.2 | 0.6; 0.5; 0.0             | 0.12; 0.08; 0.0     | 0.3077; 0.2424; 0       |
+| S2               |                 0.3 | 0.5; 0.3; 0.2             | 0.15; 0.09; 0.06    | 0.3846; 0.2727; 0.2143  |
+| S3               |                 0.1 | 0.4; 0.4; 0.2             | 0.04; 0.04; 0.02    | 0.1026; 0.1212; 0.0714  |
+| S4               |                 0.4 | 0.2; 0.3; 0.5             | 0.08; 0.12; 0.2     | 0.2051; 0.3636; 0.7143  |
+
+

@@ -1,0 +1,74 @@
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [a4paper, 10pt]
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry}
+#+LATEX_HEADER: \usepackage{amsmath,amsthm,amssymb,tensor,physics}
+#+LATEX_HEADER: \usepackage{setspace,multicol,tasks}
+#+LATEX_HEADER: \usepackage[shortlabels]{enumitem}
+#+LATEX_HEADER: \usepackage{fancyhdr}
+#+LATEX_HEADER: \usepackage{graphicx,hyperref}
+#+LATEX_HEADER: \setcounter{secnumdepth}{0}
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+title: Team 5 - Capstone Meeting Notes
+#+author: Scribe: Jalen Moore
+
+* In-Class Worktime (February 15th)
+
+| Location  | Zoom |
+| Attendees | Team |
+
+- Discussed with Dr. Siy on the VMWare server.
+- Worked on and completed the goals, functional requirements, and wireframe initial requirements. Coordinated with Kaleb for the video recordings discussing the Goals and Wireframe.
+
+* Sponsor Meeting (February 14th, 14:00)
+
+| Location  | Zoom                                      |
+| Attendees | Mike Schmitt, Karthik Reddy Pagilla, Team |
+
+- Will resend Dropbox immediately after meeting.
+- Can test with the APK on android, but not all the Python may work.
+- Open to creating repo branches. Feel free to experiment.
+- Again, they are open to anything. If it costs money they are open with good reason.
+- Karthik will run through code next time.
+- There may be some un-used code. This can be checked by monitoring the routes when debugging.
+
+* In-Class Worktime (February 13th)
+
+| Location  | Zoom |
+| Attendees | Team |
+
+- Discussed working on Initial Requirements 1-3 and when to record the presentations for the goals and wireframes.
+- Discussed/analyzed code an determined topics of discussion for tomorrow's sponsor meeting:
+  1. Get an example of the JSON used in the Python scripts.
+  2. Get a walkthrough of the Python code.
+  3. Ask about AWS server.
+  4. Get a proper link to the dropbox Mike referenced in an email.
+
+- ~findHomography()~: https://docs.opencv.org/4.x/d9/d0c/group__calib3d.html#ga4abc2ece9fab9398f2e560d53c8c9780
+
+* Sponsor Meeting (February 2nd, 12:30)
+
+| Location  | Zoom                                                    |
+| Attendees | Tom Thompson, Mike Schmitt, Karthik Reddy Pagilla, Team |
+
+*Origins:*
+- Started when Tom bought a house. Had french pane windows. 15$/hour for 4 hours just to mask his windows. Thought there was a better way.
+- Using crack and peel paper. 8 seconds to cover versus 2.5 minutes.
+
+*Project:*
+- Not starting from scratch, although the method of measuring is open for changing (from OpenCV).
+- Priorities (in order): algorithm for measuring, integration/UI, payment processing.
+- Aim for at least 1/16 accuracy in measurements.
+- Focused on interior painting. Straight on photos, not much of an angle to these photos. Potential for more dramatic photos, but not in our project scope.
+- Karthik is our tech guy. Angular/Ionic. NodeJS server backend. OpenCV libraries. Checker board object as reference to calculate window size. Cannot nail down exact precision of window size. We want it precise. UI and image processing is not where we want to be. Currently have login, create windows, photo.
+
+*Next steps:*
+- Share github accounts and get a Teams chat going.
+- Browse through the code and determine our technical next steps.
+- Establish a weekly meeting. Karthik is available MTW after lunch and F after 2:30.
+
+* Note Requirements                                                :noexport:
+
+- List the date, location and attendees
+- Record discussions and decisions made.
+- Record action items for each person (should be consistent with that person’s
+open tasks in the project tracker)

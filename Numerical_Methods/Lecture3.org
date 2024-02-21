@@ -1,0 +1,94 @@
+#+title: Lecture 3
+#+author: Jalen Moore
+
+Notes:
+
+- In practice, we do not expect to get the *exact* error.
+- $fl(x+y) \neq fl(x) + fl(y)$. $fl(x+y)$ is incorrect, write them separately. Rounding errors occur after each floating approximation. 
+
+* Floating Points
+
+Floating points are based on IEEE 754-1985 and 2008.
+
+The first bit $s$ is the _sign_ bit, followed by a set number of _characteristic_ (exponent) bits $c$, and then the _mantissa_ $f$.  
+
+- Single precision: `f32` or `float`
+- Double precision `f64` or `double`
+- Extended precision: `f128` or (long?)
+
+A ~f64~ is represented as $(-1)^{s} \cdot 2^{(c-1023)} \cdot (1+f)$
+
+Note that $(c - 1023)\in [-1023, 1024]$. Notice that the floating point number is a binary representation of 
+scientific notation.
+
+The _underflow_ ($0$) is $<2^{-1022} \cdot ( 1 + 0 )$ and the _overflow_ ($\infty$) is $>2^{1023} \cdot (2 - 2^{-52})$ 
+
+Keep in mind the mantisa is calculated left to right with $2^{-d}$ where $d$ is the digit from left to right
+starting from $-1$ on the left to $-52$ at the right. Think of the mantisa as $0. b_{-1} b_{-2}\ldots$. 
+
+** Example
+
+Consider $1$ $10000000101$ $01101010\ldots 0$ (45 zeroes). 
+
+Then, $s=1$, $c=1029$, and $m=0.4140625$. The resulting number is $(90.5)_{10}$.
+
+* Decimal Numbers
+** Rounding / Chopping
+
+Can represent $float(x)$ or equivalently $fl(x)$ in two ways.
+
+A number $x$ can be normalized to decimal scientific notation. We can then represent $x$ by:
+
+- *Chopping* involves simply removing digits left of a precision/significant digits $k$.
+  - Equivalent to chopping _down_.
+- *Rounding* adds $5\times 10^{n-(k+1)}$ to a decimal and chops the result to $k$ digits. 
+
+*** Exp
+
+Consider $e=2.718281$. Find the $3$ digit chopping.
+
+1. Normalize. $e_n = 0.2718281\times 10^{1}$.
+2. Chop. $fl(e)=0.271$. 
+
+To round to 3 digits: $fl(e) = 0.272\times 10^1 = 2.72$. (This is the same thing!)
+
+** Approximation Error 
+
+If $p^*$ is an approx to an exact value $p$, then
+
+- $|p-p^*|$ is the absolute error.
+- $\frac{|p-p^*|}{|p|}$ is the relative error.
+- $\frac{|p-p^*|}{|p|} \times 100%$ is the percentage error.
+
+*** Example
+
+Let $p = e$ and $p^* = 2.718$. Then,
+
+- $|p-p^*|=2.818\times 10^{-4}$
+- $\frac{|p-p^*|}{|p| = 1.037\times 10^{-4}$
+
+** Absolute Chopping Error 
+
+Note that $n$ is the exponent and $k$ is the number of chopped bits.
+
+\[ |x-fl(x)| \leq 10^{n-k} \]
+
+** Relative Chopping Error
+
+\[ \frac{|x-fl(x)|}{|x|} \leq 10^{1-k} \leq 5\times 10^{-k} \]
+ 
+** Unit Round-Off Error 
+
+The number $x^*$ approximates $x$ to $k$ digits when $k$ is the greatest non-negative integer for which
+
+\[ \frac{|x-x^*|}{|x|} \leq 5\times 10^{-k} = \epsilon \]
+
+In binary,
+
+\( \frac{|x-x^*|}{|x|} \leq 2^{-k} \)
+
+This is known as the *unit-round-off error* (machine precision). For double precision, $k=53$ such that $\epsilon = 2^{-53} = 1.1102 \times 10^{-16}$. In single precision, $k=24$ such taht $\epsilon = 5.9\times 10^{-8}$.
+
+* Finite-Digit Arithmetic
+
+Machine operations follow the pattern $x\oplus y = fl(fl(x) + fl(y))$. Each floating point approximation results in an error. One simple addition results in three errors.

@@ -1,0 +1,11 @@
+#+title: Capstone Lecture 4
+#+author: Jalen Moore
+
+* i* Objects
+
+Includes:
+- *Actor*: A person-to-system relationship.
+- *Goal*: Describes what the actor would like to achieve. 
+- *Task*: The process of steps to achieve the goal /(sub-tasks)/.
+- *Resource*
+- *Softgoal/Quality*

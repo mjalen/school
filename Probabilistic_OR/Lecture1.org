@@ -1,0 +1,13 @@
+# Lecture 1
+- ## Notice
+- Figure out textbook. Either buy it or find it ;)
+- Textbook isn't really needed.
+- Roughly 3 HW assignments.
+- 4 projects. "Real-world" (corporate) situation projects to create a solution and develop a report or presentation.
+- Undergrad projects may be group/solo.
+- P1 & P2 aren't coding, P3 is coding, and P4 is using software learned in class.
+- Assignments due Mon/Wed.
+- Single file assignment submissions.
+- ## OR
+  
+  Split between probabilistic (uncertain) and deterministic (certain).

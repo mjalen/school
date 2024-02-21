@@ -1,0 +1,98 @@
+#+title: MATH 4310 Lecture 8
+#+author: Jalen Moore
+
+* Markov Decision Processes
+
+** Definition
+
+- *Discrete Time MC* are dependent on states. Each time increment represents a possible state change.
+- *Continuous Time MC*
+
+To model a problem by this processes, two assumptions must be present:
+1. *Memoryless*: The next state is dependent *only* on the /current/ state.
+
+   Consider the random variable $X_t$, which represents the state at time $t$. The memoryless property states that:
+
+\begin{align*}
+  P(X_{t+1} = i_{t+1} | X_t = i_t, X_{t-1} = i_{t-2}, \ldots, X_1 = i_1, X_0 = i_o) = P(X_{t+1} = i_{t+1} | X_t = i_t).
+\end{align*}
+
+
+2. *Time Homogeneous* (or time uniformity): If a Markov Chain is in state $i$ at time $m_1$ what is the probability that $n$ periods later the Markov Cahin is in state $j$ ? 
+
+\begin{align*}
+  P(X_{m+n} | X_m = i)  = P (X_n = j | X_0 = i).
+\end{align*}
+
+These two properties *MUST* be present for a Markov Decision Process.
+
+** Example (Weather Prediction)
+
+1. Find our info.
+
+   To solve a MDP, we need three things:
+   - Our random variable.
+   - Our state space.
+   - Period.
+
+   From the problem, we have:
+   - $X_t\in \{ R, S \}$. Either Rainy or Sunny (state space) on day $t$ (period). 
+
+2. Compute steady state (long-run) probabilities. 
+
+   Build our *transition probability matrix*: $P_{n, n}$
+
+   \begin{align*}
+    p^1 = \begin{bmatrix}
+      0.5 & 0.5 \\
+      0.2 & 0.8
+    \end{bmatrix}
+  \end{align*}
+
+   The rows always add to one. Each column is $t$ and each row is $t+1$. The exponent represents the number of time steps taken. So the square of this matrix represents $P(X_{t+2} | X_{t})$.  
+
+   To find $\lim_{t\rightarrow\infty} p^t$, we use the *Chapman-Kohmgorev Equation* /(Check spelling)/:
+
+\begin{align*}
+  \begin{cases}
+    \pi^T p = \pi^T\\
+    \sum_{i=1}^n \pi_i = 1.
+  \end{cases}
+\end{align*}
+
+where $\pi$ are the steady state probabilities.
+
+For this problem, this is:
+
+\begin{align*}
+  \begin{bmatrix} \pi_R & \pi_S \end{bmatrix}\cdot  \begin{bmatrix} 0.5 & 0.5 \\ 0.2 & 0.8 \end{bmatrix} &= \begin{bmatrix} \pi_R & \pi_S \end{bmatrix}.
+\end{align*}
+
+This results in a system of equations:
+
+\begin{align*}
+  0.5 \pi_R + 0.2 \pi_S = \pi_R,\\
+  0.5\pi_R + 0.8\pi_S = \pi_S,\\
+  \pi_R + \pi_S = 1.
+\end{align*}
+
+The first two equations are the same: $0.5\pi_R - 0.2\pi_S = 0$. Solving the equations yields $\pi_S = 5/7$ and $\pi_R = 2/7$. These are the values that each column $R$ or $S$ converge to. So,
+
+    \begin{align*}
+     p^\infty = \begin{bmatrix}
+       \frac{2}{7} & \frac{5}{7} \\
+       \frac{2}{7} & \frac{5}{7}. 
+     \end{bmatrix}
+   \end{align*}
+
+So, finally our expected satisfaction is:
+
+\begin{align*}
+  E[\text{Satisfaction}] = \frac{2}{7} (2) + \frac{5}{7} (10) = \frac{54}{7}.
+\end{align*}
+
+
+
+
+
+

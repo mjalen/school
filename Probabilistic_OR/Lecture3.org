@@ -1,0 +1,62 @@
+#+title: MATH 4200 Lecture 3
+#+author: Jalen Moore
+
+* Decision Rules
+** Maximum Likelihood
+
+Pick the most probable state of nature and then choose the best payoff among the alternatives.
+
+For example, if I am making a salary based budget and I am unsure about my year-end bonus, assume a low/zero bonus as it is more likely to have a low bonus.
+
+** Aspiration Level
+
+Choose the desired lower bound payoff and find the alternative that maximizes the likelihood that I achieve that payoff.
+
+This rule is not _optimal_.
+
+** Maximum Expected Value
+Choose the alternative with the greatest expected value $E(A_i) = \sum_{j=1}^n P_k \cdot O_{ij}$.
+
+This rule suffers from outliers and is not optimal.
+
+** Maximum Expectation - Variance
+
+Calculate $Q(A_i) = E[A_i] - \sigma^2 [A_i]$  for each alternative $A_i$, where
+$\sigma_i^2 = \sum_{j=1}^n P_j \left[O_{ij} - E(A_i)\right]^2$.
+
+The variance is the _risk_ of the alternative. The higher the variance, the more volatility or risk.
+
+* Decision Rules Cont'd
+
+Below are rules that do _not_ take into account probability.
+
+** Maximin (Minimax)
+
+Choose the alternative with the greatest minimum. We maximize the minimum (maximin). Vice versia for minimax.
+
+This rule has the issue that it _only_ takes into account the minimum. So, every other payoff in the alternative
+could be worse than another alternative.
+
+** Maximax (Minimin)
+
+Obvious by the name.
+
+** Minimax (Regret)
+
+The regret is the maximal payoff in a state of nature minus the alternative payoff. Then, once the regret of each
+outcome is found, calculate the minimax.
+
+** Laplace Rule
+
+Assuming all states of nature, choose the alternative with the maximum expected payoff.
+
+** Hurwicz Rule
+
+Take the max $x$ and min $y$ of each alternative and compute $ax + (1 - a) y$ where $a\in[0,1]$ is the
+optimism/pessimism index for each alternative.
+
+* Rule Properties
+
+- *Complete ordering of alternatives*: Logically, if $A>B$ and $B>C$, then $A>C$.
+- *Independence of irrelevant alternatives*: Choosing favorites.
+- *Independence of labeling*: Names do not matter, only numbers.

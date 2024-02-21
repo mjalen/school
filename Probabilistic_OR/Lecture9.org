@@ -1,0 +1,58 @@
+#+title: Lecture 9
+#+author: Jalen Moore
+
+* Umbrellas
+
+The random variable $X_t$ quantifies the number of umbrellas at location $t$. The state space is $S=\{0,1,2,3,4\}$.
+
+The transisition probability matrix is $p\in \mathcal{M}^{5,5}$ such that each column represents $t=\text{Office}$ and $t=\text{Car}$.
+
+\begin{align*}
+  p = \begin{bmatrix}
+    0 & 0 & 0 & 0 & 1 \\
+    0 & 0 & 0 & 0.75 & 0.25 \\
+    0 & 0 & 0.75 & 0.25 & 0 \\
+    0 & 0.75 & 0.25 & 0 & 0 \\
+    0.75 & 0.25 & 0 & 0 & 0
+  \end{bmatrix}
+\end{align*}
+
+The above represents the probability of leaving my car (before taking an umbrella)  with $r$ number of umbrellas and enter the office with $c$ number of umbrellas.
+
+The steady probabilities are found using $\pi^T$.
+
+\begin{align*}
+  \begin{bmatrix} \pi_0 & \pi_1 & \pi_2 & \pi_3 & \pi_4 \end{bmatrix}\cdot \begin{bmatrix}
+    0 & 0 & 0 & 0 & 1 \\
+    0 & 0 & 0 & 0.75 & 0.25 \\
+    0 & 0 & 0.75 & 0.25 & 0 \\
+    0 & 0.75 & 0.25 & 0 & 0 \\
+    0.75 & 0.25 & 0 & 0 & 0
+  \end{bmatrix} = \begin{bmatrix} \pi_0 & \pi_1 & \pi_2 & \pi_3 & \pi_4 \end{bmatrix}
+\end{align*}
+
+ This is a nightmare, so we must solve a more convenient method:
+
+ \begin{align*}
+   \pi^T p &= \pi^T\\
+   \pi^T p &= \pi^TI\\
+   \pi^T (p-I) &= 0\\
+   \pi^T (p-I) (p-I)^{-1} &= 0 (p-I)^{-1}\\
+   \pi^T &= 0 (P-I)^{-1}.
+ \end{align*}
+
+ To make this equation nicer, we will change column 4 in $(p-I)$ to ones. This is our $Q$ matrix. Then, we take the inverse of $Q$ in Excel using ~=MINVERSE()~ and executing with ~C-<Shift>-<Enter>~.
+
+ You can do this to our matrix $Q$, because it is being multiplied by zero anyways. Therefore, the final row (row 4) is $\pi^T$. In other words:
+
+ \begin{align*}
+   \pi^T = \begin{bmatrix} 0.157895 & 0.210526 & 0.210526 & 0.210526 & 0.210526 \end{bmatrix}
+ \end{align*}
+
+ Therefore, our questions can be answered.
+
+ 1. $\pi_0 = 0.157895$.
+ 2. $0.25 \cdot (0.157895) = 0.03947$.
+ 3. The percentage of time I have an umbrella is $1 - \pi_0 = 0.843$. Therefore $P(\text{I use an umbrella}) = 0.25 \cdot (0.843) = 0.21$. The expected cost per year is $E[\text{Cost}] = 0.21 \cdot 0.1 \cdot (500)\cdot 10\text{USD} = 105 \text{USD}$, assuming umbrellas are used 500 times per year.
+ 4. $E[\text{Cost w/ 4 umbrellas}] = 105 + 0.03947\cdot 5\cdot 500 = 204$. To find the expected cost with 5 umbrellas, we meed a whole new matrix to find $\pi_5$. Therefore,  $E[\text{Cost w/ 4 umbrellas}] = 190$. Thus, it is cheaper to buy an additional umbrella.
+ 5. This requires another  $2\times2$ matrix. This results in $E=267.8$. Therefore, I should *NOT* buy a heavy duty umbrella.

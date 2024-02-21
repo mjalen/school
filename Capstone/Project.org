@@ -1,0 +1,117 @@
+#+title: Capstone Project Notes 
+#+author: Jalen Moore
+
+Sponsor: Painless Prep
+Contact: Mike Schmitt
+
+* Description
+
+For many painters, manually masking windows in preparation for painting can be a tedious and time-consuming process. When on jobs with large numbers of window panes, sometimes including French windows, this task can take hours. Painless Prep is looking for an application with the capability to precisely measure window pane dimensions so that they laser cut custom window covers to prepare for painting jobs. This would make the prep process fast and accurate.
+
+The (ideal) use case is that a painter takes a picture of the window pane from a mobile device and the app automatically computes the window dimensions. A desired goal is to measure the window pane sizes up to 1/16 to 1/32 of an inch. There is an existing unfinished application upon which the project can be based. The capstone team can also decide to start the project from scratch.
+
+Depending on the team's background, Painless Prep would like to explore two options:
+
+- Using only image processing techniques.
+- Using a combination of image processing and deep learning techniques.
+
+They are also open to working with 2 capstone teams, one for each option.
+
+Background skills:
+
+- Javascript, AngularJS, Ionic, NodeJS, Python, SQL.
+- Some team members with experience in OpenCV and image processing will be ideal. Otherwise, it is expected that the team learn to use basic OpenCV APIs early in the semester.
+- For Option B: some experience with deep learning (e.g., CNN) is expected.
+
+Expected benefits:
+Learn real-world applications of image processing.
+Learn strategies for precise measurements from images.
+
+* Notes
+
+** Zoom
+
+- Interesting announcement from UNL: [[https://newsroom.unl.edu/announce/cse/11401/66757]].
+- A tutorial on window masking: [[https://www.youtube.com/watch?v=PY-Xpbiz45g]].
+  - Window masking is the process of covering a window and its edges in prep for painting a house/building.
+
+Started when Tom bought a house. Had french pane windows. 15$ an hour for 4 hours just to pane windows. Must be a better way. Crack and peel paper. 8 seconds to cover vs. 2.5 minutes per window. More practical method. Started in Lincoln during COVID with UNL students.
+
+[[gopainlessprep.com]]
+
+Not starting from scratch.
+
+Karthik is our tech guy. Angular/IOnic. NodeJS server bcakend. OpenCV libraries. Checker board object as reference to calculate window size. Cannot nail down exact precision of window size. We want it precise. UI and image processing is not where we want to be. Currently have login, create windows. Purchasing in the app, 
+
+Priorities: algo, integration/UI, payment processing. Not married to OpenCV, open to starting from scratch. 
+
+Respond to the email with Github.
+
+Focused on interior painting. Straight on photos, not much of an angle to these photos. Potential for more, but not in our scope.
+
+Need to get /a/ measurement.
+
+Slack?
+
+MTW after lunch F after 2:30. 
+
+402-331-0392
+
+** Discord Post
+
+Notes from today's meeting for future reference:
+
+Origins:
+- Started when Tom bought a house. Had french pane windows. 15$/hour for 4 hours just to mask his windows. Thought there was a better way.
+- Using crack and peel paper. 8 seconds to cover versus 2.5 minutes.
+
+Project:
+- Not starting from scratch, although the method of measuring is open for changing (from OpenCV). 
+- Priorities (in order): algorithm for measuring, integration/UI, payment processing. 
+- Aim for at least 1/16 accuracy in measurements.
+- Focused on interior painting. Straight on photos, not much of an angle to these photos. Potential for more dramatic photos, but not in our project scope.
+- Karthik is our tech guy. Angular/Ionic. NodeJS server backend. OpenCV libraries. Checker board object as reference to calculate window size. Cannot nail down exact precision of window size. We want it precise. UI and image processing is not where we want to be. Currently have login, create windows, photo. 
+
+Next steps:
+- Share github accounts and get a Teams chat going.
+- Browse through the code and determine our technical next steps.
+- Establish a weekly meeting. Karthik is available MTW after lunch and F after 2:30.
+ 
+* Questions
+** Personal 
+
+Make sure to ask these!
+
+- [ ] Is the project a standalone Android/IOS app?
+- [ ] What is the scope of the project? Does it simply measure the window, or does it connect to your servers for potential window cover purchases?
+- [ ] How important of a feature is deep learning? Is this a feature you are prioritizing?
+- [ ] Is there a target window size(s)? What is the current solution for measuring these windows? 
+- [ ] 
+
+** Team 
+
+Place team questions and answers here...
+
+* Repository 
+
+- ~npm start~ runs local frontend.
+
+* In-class 2/8
+** Meeting Notes
+
+18:30 - 19:
+
+- Worked on the Context Document as a group.
+- Discussed how image processing should be processed. Locally versus AWS. 
+  
+** Journal 2/8
+
+*** Guidelines
+
+- Write everything you worked on during the meeting. Can be a bullet list of my activities.
+- Additional entries outside of team meetings when working independently.
+
+*** Entry
+
+- Worked on the Context Document as a group.
+- Personally worked on the Legal/Ethical Facet section.

@@ -1,0 +1,386 @@
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [a4paper, 10pt]
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry} 
+#+LATEX_HEADER: \usepackage{amsmath,amsthm,amssymb,tensor,physics}
+#+LATEX_HEADER: \usepackage{setspace,multicol,tasks}
+#+LATEX_HEADER: \usepackage[shortlabels]{enumitem}
+#+LATEX_HEADER: \usepackage{fancyhdr}
+#+LATEX_HEADER: \usepackage{graphicx,hyperref}
+#+LATEX_HEADER: \setcounter{secnumdepth}{0}
+#+OPTIONS: toc:nil
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+title: Project 1 - MATH 4310
+#+author: Jalen Moore
+
+* Handout Notes                                                    :noexport:
+
+** 1.2 Philosophy 
+
+- Hurricane response process has evolved over many years.
+- "Nothing good can come from a closed Waffle House after a hurricane - not for us, not for the community, not for the associates."
+- The National Guard welcomes Waffle House personnel and recognizes the value in them during hurricanes.
+
+** 1.3 Response Cycle
+
+- Response follows a cycle.
+  - *Prep*: Begins in the spring before hurricane season.
+- Major weather events trigger response systems; the lessons learned are recorded for future seasons.
+- Shift from a response *task* to a response *event*.
+- Hurricane planning is comprised of senior management of each corporate function.
+- Well documented response processes.
+
+*** 1.3.1 Menu Prep
+
+- During pre-season prep, previous year lessons are reviewed. 
+- Limited menu is served during reopen. This menu is determined during pre-season.
+- Prices are fixed to pre-season rates with the lowest possible tax rates (rounded down).
+
+*** 1.3.2 Storm Prep
+
+- Category 3 landfalls trigger hurricane response. 
+- *PROCESS STEP 1*: Designate commander-in-control responsible for coordination of all response activities.
+- When a storm is imminent, purchases for supplies are made before closure/reopening.
+- RVs and refrigerator trucks are used as necessary.
+  - RVs are used for WH employees who enter the affected area after the storm.
+
+*** 1.3.3 Post-Storm
+
+- Aim to have personnel dispatched within 12 hours after the storm passes.
+
+*** 1.3.4 Normalcy
+
+Normalcy expected in a week up to a year (dependent on severity). 
+
+** 1.4 Functional Groups
+
+*** 1.4.1 C-i-C
+
+- Mobilizes resources.
+
+*** 1.4.2 Purchasing
+
+- Developed a timeline for assistance.
+  - 5 days before, comm with suppliers for emergency items.
+  - 2 days before, bread supplier makes last deliveries to the affected area.
+    - Also delivers safety stock to stores that are not on the storm route but nearby.
+- RVs used as "mobile cmmand centers".
+- 2 days before, places order for "first-wave supplies".
+  - ice, bottled water, canned soft drinks, to-go supplies, cleaning supplies.
+  - Supplies have been standardized based on past experience.
+- In the past, store managers had to deem the necessary food/supplies.
+  - Since 2004's Hurricane Ivan, a hurricane inventory level sheet is used. This has improved ability to reopen.
+
+*** 1.4.3 Construction/Equipment
+
+- Assesses damage to affected restaurants and refuels on-location responders.
+- Determines which restaurants can be reopend and in which order.
+
+- Equipment group is close with those tasks, but also arranges generators and equipment.
+
+*** 1.4.4 Operations
+
+- Responsible for running restaurants.
+- Until 1989, WH had a full menu. Caused chaos.
+  - Practical. Ham is quicker to cook than bacon.
+
+*** 1.4.5 Peeps and IT
+
+- All employees must be accounted for.
+- Secures hotel rooms for response personnel and displaced associates.
+  - This is hard, hence the RVs.
+- IT obviously handles hardware issues and secures replacement parts.
+- Corporate psychologist is available to local associates and responders.
+
+*** 1.4.6 Control
+
+- Accounts for food. Food is frozen.
+- Payroll. WH pays Sundays in cash, but banks are often closed during storms, so cash must be brought in from outside the storm zone.
+
+** 1.5 Conclusion
+
+- Leader in disaster relief.
+- Provides insight for other orgs to develop their own response capabilities.
+
+* Part 3
+
+** Exercise 1
+
+The data needed to decide on the number of purchased generators include the following.
+
+- Areas that are more likely to be hit by a hurricane.
+- Projected storm zone.
+- The number of restaurants in the storm zone.
+- Past profits of restaurants that re-opened after a storm, to minimize profit loss in the future.
+- The proximity between restaurants (distances between restaurants in the area), to determine an efficient order to opening restaurants.  
+- The amount of electricity to keep each restaurant operational.
+
+** Exercise 2
+
+The cost of a generator can be estimated by the average market cost of a generator plus additional supplies that are required for opening a restaurant immediately following a storm. A generator purchase implies further costs in supplies. A generator is only purchased for a restaurant that is opened immediately following a storm. A restaurant does not operate on a generator alone, but the additional supplies (food, personnel, cleaning supplies, utensils, etc.).  
+
+** Exercise 3
+
+The cost of generator shortages can be estimated using historical data. During past storms, what were the profits of the restaurants that opened up following storm end? Accounting for price changes and inflation, the average profits of these stores would be the expected cost of a generator shortage for a future storm. 
+
+** Exercise 4
+
+When over-estimating generator needs, there is a risk of spreading resources too thin. From a practical perspective, it could be difficult to organize enough resources to open the desired number of restaurants (reflected in the number of generators purchased). As a result, there is an excess of generators, which leads to a loss in money due to generator cost. For example, in Part 4, the cost would be a loss of $1,000 per generator in surplus.
+
+When under-estimating generator needs, there is a risk in loss of profits. If 3 restaurants are re-opened with a generator each, but there is demand for 5 restaurants, then a profit loss has occurred per restaurant without electricity. This loss would be a loss of 2 restaurants. This profit loss is a much steeper linear value with respect to demand, as opposed to over-estimation. 
+
+** Exercise 5
+
+From the above estimates, it would be better to over-estimate the number of generators needed. The higher costs is outweighed by the better profit prospects. Prioritizing profit in this scenario is also beneficial to the victims of storms who need food. Opening more restaurants right after a storm increases the amount of food available to those in need. This creates demand and furthers profit. In the event of less demand, the loss is primarily from the cost of the generators instead of potential profit. The amount of profits made from the restaurants that do receive demand can cover the excess generators. Therefore, the better alternative is to purchase a larger amount of generators and plan to open more restaurants immediately when the storm ends.
+
+* Part 4
+** Exercise 1
+*** Answer
+
+Let $F$ be the cumulative distribution function for the number of generators needed (as in /Table 2/). Let $Q^*$ be the optimal number of generators purchased. By following the newsvendor problem,
+
+\begin{align*}
+  F(Q^*) = \frac{c_u}{c_u + c_o}.
+\end{align*}
+
+Therefore, /Table 3/ and /Table 4/ may be completed.
+
+*Table 3: Scenario 1 - Generator Shortage Costs $5,000 per day in lost profit.*
+| Days without Electricity                                 | 2 days          | 3 days          | 4 days          | 5 days          |
+|----------------------------------------------------------+-----------------+-----------------+-----------------+-----------------|
+| Overage Cost (Cost per Generator)                        | 1,000           | 1,000           | 1,000           | 1,000           |
+| Underage Cost (Lost Profit)                              | 10,000          | 15,000          | 20,000          | 25,000          |
+| Newsvendor Critical Ratio                                | $0.9091$ | $0.9375$ | $0.9524$ | $0.9615$ |
+| $Q^*$ (Cost-minimizing number of generators to purchase) | $4$             | $4$             | $8$             | $12$            |
+
+*Table 4: Scenario 2 - Generator Shortage Costs $3,000 per day in lost profit.*
+| Days without Electricity                                 | 2 days        | 3 days         | 4 days          | 5 days          |
+|----------------------------------------------------------+---------------+----------------+-----------------+-----------------|
+| Overage Cost (Cost per Generator)                        | 1,000         | 1,000          | 1,000           | 1,000           |
+| Underage Cost (Lost Profit)                              | 6,000         | 9,000          | 12,000          | 15,000          |
+| Newsvendor Critical Ratio                                | $0.8571$ | $0.9000$ | $0.9231$ | $0.9375$ |
+| $Q^*$ (Cost-minimizing number of generators to purchase) | $4$           | $4$            | $4$             | $4$             |
+
+** Exercise 2
+*** Part A
+
+Consider that lost profits are estimated at $5,000 per day. Based on /Table 2/ and /Table 3/, $4$ generators should be purchased to minimize costs.
+
+*** Part B
+
+If electricity is instead out for 4 days, then there would be a shortage of generators. From /Table 3/, if electricity is out for 4 days, then $D=8$ generators should be purchased. In Part A, it was projected that $Q^*=4$ generators should be bought to minimize the cost of 3 days out of electricity. With a shortage of 4 generators, each generator costs an underage cost of $5,000 due to a day without electricty. Therefore, the total loss in profits is
+
+\begin{align*}
+  20000\cdot (D - Q^*) &= 20000\cdot (8 - 4),\\
+  &= 80,0000.
+\end{align*}
+
+Thus, the loss of profit is $80,000 due to an additional day without electricity.
+
+*** Part C
+
+The newsvendor model is not an optimal model, as it relies on uncertainty. The most optimal number of generators purchased would theoretically be fractional . For example, it is impossible to find an optimal $Q^*$ for $F(Q^*) = 0.9091$. The solution to this problem is to get the minimum $Q^*$ such that $F(Q^*)\geq0.9091$. Optimizing $Q^*$ so that $F(Q^*)$ is equal to the critical ratio would require a continuous random variable. This is simply not realistic, as $3.62$ or $5.22$ generators cannot be purchased (for example). Furthermore, the model is dependent on the cumulative distribution function (CDF) given. If data was given for each generator purchased, then a more optimal cost assessment could be made. It may be possible that $Q^* = 2$ is more optimal, but without additional data for the CDF, this cannot be determined.
+
+** Exercise 3 
+*** Part A 
+
+There are two cases for the realized cost of purchasing $Q$. If $Q < D$, then the realized cost is the cost of the purchased generators and the lost profits of the shortage of generators: 
+
+\begin{align*}
+  C_{(Q<D)} &= 1000 \cdot Q + 15000\cdot (D - Q),\\
+  &= 15000 D - 14000 Q.
+\end{align*}
+
+Furthermore, if $Q\geq D$, then the realized cost is the cost of all purchased generators: 
+
+\begin{align*}
+  C_{(Q\geq D)} = 1000 Q.
+\end{align*}
+
+*** Part B
+
+If $D$ is correctly projected /a priori/, then $Q=D$ and  the optimal cost would be
+
+\begin{align*}
+  C_{(Q=D)}_{} = 1000 D.
+\end{align*}
+
+*** Part C
+
+The regret $R$ incurred when purchasing $Q$ generators is the following:
+
+
+\begin{align*}
+  R_{(Q\geq D)} &= 1000Q - 1000 D,\\
+  &= 1000 (Q - D).
+\end{align*}
+
+\begin{align*}
+  R_{(Q<D)} &= 1000Q + 15000 (D - Q) - 1000 D,\\
+  &= 14000 (D - Q).
+\end{align*}
+
+*** Part D
+
+Given electricity is out for 3 days, with a loss of profit of $5,000 per day and a generator cost of $1000:
+
+*Table 5: Realized Costs and Maximum Regret*
+|  Q | Realized Cost if $D=0$ | Realized Cost if $D=16$ | Max Regret |
+|----+------------------------+-------------------------+------------|
+|  0 |                      0 |                  240000 |     224000 |
+|  1 |                   1000 |                  226000 |     210000 |
+|  2 |                   2000 |                  212000 |     196000 |
+|  3 |                   3000 |                  198000 |     182000 |
+|  4 |                   4000 |                  184000 |     168000 |
+|  5 |                   5000 |                  170000 |     154000 |
+|  6 |                   6000 |                  156000 |     140000 |
+|  7 |                   7000 |                  142000 |     126000 |
+|  8 |                   8000 |                  128000 |     112000 |
+|  9 |                   9000 |                  114000 |      98000 |
+| 10 |                  10000 |                  100000 |      84000 |
+| 11 |                  11000 |                   86000 |      70000 |
+| 12 |                  12000 |                   72000 |      56000 |
+| 13 |                  13000 |                   58000 |      42000 |
+| 14 |                  14000 |                   44000 |      28000 |
+| 15 |                  15000 |                   30000 |      15000 |
+| 16 |                  16000 |                   16000 |      16000 |
+
+
+** Exercise 4
+*** Part A
+
+In order to minimize the maximum regret, $15$ generators should be purchased. This can be seen from /Table 5/ above. When $15$ generators are purchased, the regret when $D=0$ is
+
+\begin{align*}
+  R_{15\geq0} &= 1000 * (15 - 0) = 15000. 
+\end{align*}
+
+Furthermore, if $D=16$, the regret is
+
+\begin{align*}
+  R_{15<16} = 14000 (16 - 15) = 14000.
+\end{align*}
+
+Therefore, the worse case scenario is that zero generators are needed and the cost incurred is just that of the generators. On the other extreme, if there is a generator shortage by one, then there will be a loss of only one restaurant.
+
+*** Part B
+
+If the electricity was out for four days, then the realized cost would be the following.
+
+\begin{align*}
+  C_{(Q<D)} &= 1000 \cdot Q + 20000\cdot (D - Q),\\
+  &= 20000 D - 19000 Q.
+\end{align*}
+
+\begin{align*}
+  C_{(Q\geq D)} = 1000 Q.
+\end{align*}
+
+So, if $D=0$, then $C = 15000$ with a regret of $R=15,000$ as before. But if $D=16$, then $C=35,000$ with a regret of $R= 29,000$. In contrast, if $16$ generators were bought, the cost for $D=0$ and $D=16$ would be $C=16,000$ with regrets of $R_{D=0} =16000$ and $R_{D=16} =0$ respectively. In this case, the better option would be to purchase $16$ generators, as this is the action of lower maximum regret.
+
+*** Part C
+
+The advantage of using a minimax model for regret is that it increases the likelihood that a favorable alternative is chosen. By minimizing the maximum regret, there is less profits potentially lost. The disadvantage that results from this model is that it is not optimal. While there is a higher likelihood that profit loss is low, it is not the lowest it could be. There will always be some regret in the alternative chosen, as opposed to the most optimal choice which is not apparent until after-the-fact.   
+
+** Exercise 5
+*** Part A
+
+Let $d\in \{2,3,4\}$ be the number of days out of electricity. If the daily profit loss is $3,000, then the realized cost is the following.
+
+\begin{align*}
+  C_d &= \begin{cases}
+    1000Q + 3000 d \cdot (D - Q) & \text{ for } Q < D\\
+    1000 Q & \text{ for } Q \geq D.
+  \end{cases}
+\end{align*}
+
+Furthermore, the regret is the following.
+
+\begin{align*}
+  R_d = \begin{cases}
+    (3000d - 1000) (D - Q) & \text{ for } Q < D\\
+    1000 \cdot (Q - D) & \text{ for } Q \geq D.
+  \end{case}
+\end{align*}
+
+Therefore, the following table is adapted from Table 5.
+
+|    |                    | $C_d$ when $D= 16$ |        |        | Max Regret |        |        |
+|  Q | $C_d$ when $D = 0$ |              $d=2$ |  $d=3$ |  $d=4$ |      $d=2$ |  $d=3$ |  $d=4$ |
+|----+--------------------+--------------------+--------+--------+------------+--------+--------|
+|  0 |                  0 |              96000 | 144000 | 192000 |      80000 | 128000 | 176000 |
+|  1 |               1000 |              91000 | 136000 | 181000 |      75000 | 120000 | 165000 |
+|  2 |               2000 |              86000 | 128000 | 170000 |      70000 | 112000 | 154000 |
+|  3 |               3000 |              81000 | 120000 | 159000 |      65000 | 104000 | 143000 |
+|  4 |               4000 |              76000 | 112000 | 148000 |      60000 |  96000 | 132000 |
+|  5 |               5000 |              71000 | 104000 | 137000 |      55000 |  88000 | 121000 |
+|  6 |               6000 |              66000 |  96000 | 126000 |      50000 |  80000 | 110000 |
+|  7 |               7000 |              61000 |  88000 | 115000 |      45000 |  72000 |  99000 |
+|  8 |               8000 |              56000 |  80000 | 104000 |      40000 |  64000 |  88000 |
+|  9 |               9000 |              51000 |  72000 |  93000 |      35000 |  56000 |  77000 |
+| 10 |              10000 |              46000 |  64000 |  82000 |      30000 |  48000 |  66000 |
+| 11 |              11000 |              41000 |  56000 |  71000 |      25000 |  40000 |  55000 |
+| 12 |              12000 |              36000 |  48000 |  60000 |      20000 |  32000 |  44000 |
+| 13 |              13000 |              31000 |  40000 |  49000 |      15000 |  24000 |  33000 |
+| 14 |              14000 |              26000 |  32000 |  38000 |      14000 |  16000 |  22000 |
+| 15 |              15000 |              21000 |  24000 |  27000 |      15000 |  15000 |  15000 |
+| 16 |              16000 |              16000 |  16000 |  16000 |      16000 |  16000 |  16000 |
+
+
+Furthermore, the following can be found for $d\in\{2,4,5\}$ with a daily loss of $5,000.
+
+\begin{align*}
+  C_d &= \begin{cases}
+    1000Q + 5000 d \cdot (D - Q) & \text{ for } Q < D\\
+    1000 Q & \text{ for } Q \geq D.
+  \end{cases}
+\end{align*}
+
+\begin{align*}
+  R_d = \begin{cases}
+    (5000d - 1000) (D - Q) & \text{ for } Q < D\\
+    1000 \cdot (Q - D) & \text{ for } Q \geq D.
+  \end{case}
+\end{align*}
+
+
+
+|    |                    | $C_d$ when $D= 16$ |        |        | Max Regret |        |        |
+|  Q | $C_d$ when $D = 0$ |              $d=2$ |  $d=4$ |  $d=5$ |      $d=2$ |  $d=4$ |  $d=5$ |
+|----+--------------------+--------------------+--------+--------+------------+--------+--------|
+|  0 |                  0 |             160000 | 320000 | 400000 |     144000 | 304000 | 384000 |
+|  1 |               1000 |             151000 | 301000 | 376000 |     135000 | 285000 | 360000 |
+|  2 |               2000 |             142000 | 282000 | 352000 |     126000 | 266000 | 336000 |
+|  3 |               3000 |             133000 | 263000 | 328000 |     117000 | 247000 | 312000 |
+|  4 |               4000 |             124000 | 244000 | 304000 |     108000 | 228000 | 288000 |
+|  5 |               5000 |             115000 | 225000 | 280000 |      99000 | 209000 | 264000 |
+|  6 |               6000 |             106000 | 206000 | 256000 |      90000 | 190000 | 240000 |
+|  7 |               7000 |              97000 | 187000 | 232000 |      81000 | 171000 | 216000 |
+|  8 |               8000 |              88000 | 168000 | 208000 |      72000 | 152000 | 192000 |
+|  9 |               9000 |              79000 | 149000 | 184000 |      63000 | 133000 | 168000 |
+| 10 |              10000 |              70000 | 130000 | 160000 |      54000 | 114000 | 144000 |
+| 11 |              11000 |              61000 | 111000 | 136000 |      45000 |  95000 | 120000 |
+| 12 |              12000 |              52000 |  92000 | 112000 |      36000 |  76000 |  96000 |
+| 13 |              13000 |              43000 |  73000 |  88000 |      27000 |  57000 |  72000 |
+| 14 |              14000 |              34000 |  54000 |  64000 |      18000 |  38000 |  48000 |
+| 15 |              15000 |              25000 |  35000 |  40000 |      15000 |  19000 |  24000 |
+| 16 |              16000 |              16000 |  16000 |  16000 |      16000 |  16000 |  16000 |
+
+*** Part B
+
+Comparing the minimax regret for each scenario with the cost minimizing number of generators purchased, the results are quite opposing. Below is a table for each choice based on the given method. The result cells are the corresponding number of generators to purchase.
+
+|                | 3,000 loss/day |       |       | 5,000 loss/day |       |       |
+| Method         |          $d=2$ | $d=3$ | $d=4$ |          $d=2$ | $d=4$ | $d=5$ |
+|----------------+----------------+-------+-------+----------------+-------+-------|
+| Newsvendor     |              4 |     4 |     4 |              4 |     8 |    12 |
+| Minimax Regret |             14 |    15 |    15 |             15 |    16 |    16 |
+
+It can be seen that using the News Vendor model, it saves the most money and is therefore risk adverse. In contrast, the minimax regret is more risky by seeking the best alternative with the least regret. The News Vendor model achieves minimal cost by buying only the necessary generators, while the minimal regret model achieve minimal regret by buying a potential surplus of generators and taking a minimal loss.
+
+*** Part C
+
+These results imply that supply chain managers must choose between two priorities The safer priority minimizes cost at the expense of profits. The riskier priority is by minimizing potential profit loss and regret, by spending more money on generators. This has further implications on the communities affected by the storms. Using the Newsvendor model naturally opens less restaurants initially, meaning there is less of a supply of food. This is opposed to the minimal regret model, which suggests to open more restaurants immediately and provide more access to food. 
+
+** Exercise 6
+
+From the above findings, I would purchase $15$ generators. This decision follows the minimal regret model. Buying a potential surplus of generators will provide the lowest regret in profit loss, along with the most food provided to the affected communities. If the news vendor model were followed, a lot of profits would be lost as the minimal amount of generators are purchased. As a corporate entity, the number one priority is profits. Buying $15$ generators would produce the least amount of profit loss than buying $4$ generators.

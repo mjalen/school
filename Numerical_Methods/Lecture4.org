@@ -1,0 +1,149 @@
+#+title: MATH 4200 Lecture 4 
+#+author: Jalen Moore
+
+* Note
+
+The operator $F x = fl(x)$.
+
+* Floating Point Arithmetic
+** Example
+
+Consider $\left( \frac{2}{3} + \frac{3}{7} \right) - \frac{1}{2} = 0.5952380$. The floating point approx is the following.
+
+\begin{align*}
+  F\left( F\frac{2}{3} + F\frac{3}{7} \right) - F\frac{1}{2} &\approx F( 0.667 \times 10^0 + 0.429\times 10^0 ) - 0.500 \times 10^0,\\
+  &\approx F1.096 - 0.500,\\
+  &\approx 0.110 \times 10^1 - 0.500,\\
+  &\approx 0.600. 
+\end{align*}
+
+The relative error is
+
+\begin{align*}
+  \left| \frac{\frac{25}{42} - 0.600}{\frac{25}{42}} \right| = 0.8 \times 10^{-2}.
+\end{align*}
+
+** Negative Effects of Round-off Errors 
+*** Idea
+
+Numerically, the following occur based on error.
+
+- $(a+b)+c \neq a+(b+c)$.
+
+*** Example
+
+Consider $a=10.02$ and $b=1.002$ and $c=2.004$.
+
+\begin{align*}
+  (a+b)+c &\approx (0.1002 \times 10^2 + 0.1002\times 10^1) + 0.2004 \times 10^1,\\
+  &\approx 11.022 + 0.2004 \times 10^1,\\
+  &\approx 0.1102 \times 10^2 + 0.2004 \times 10^1,\\
+  &\approx 13.024,\\
+  &\approx 0.1302 \times 10^2.
+\end{align*}
+
+\begin{align*}
+  a + (b + c) &\approx  0.1002 \times 10^2 + (0.1002\times 10^1 + 0.2004 \times 10^1),\\
+  &\approx 0.1002 \times 10^2 + 3.006,\\
+  &\approx 13.026,\\
+  &\approx 0.1303 \times 10^2.
+\end{align*}
+
+So, clearly the above are not equal.
+
+*** Example
+
+Consider $1000 + \sum_{i=1}^{10^4} 0.1001$ for $k=4$.
+
+#+begin_src matlab
+  s=1000;
+  for i=1:10^4
+      s= s + 0.1001;
+  end
+  s
+#+end_src
+
+#+begin_src python
+  s = 1000
+  for i in range(10 ** 4):
+      s = s + 0.1001
+
+  print(s) # results in 1000.
+
+  # different from
+  s = 0 
+  for i in range(10 ** 4):
+      s = s + 0.1001
+
+  print(s + 1000) # results in 2000.
+#+end_src
+
+** Cancelation Error
+*** Definition
+
+Describes a loss of significance in subtraction. Given two numbers $x$ and $y$ are *nearly equal* and have $k$ precision. Then, there exists $p < k$ digits that are lost. The resulting subtraction $x\ominus y$ has $k-p$ digits of significance where $p$ digits are lost.
+
+*** Example
+
+Consider $\sqrt{38.1} - \sqrt{38}$. Then, $F\sqrt{38.1} = 6.17$ and $F\sqrt{38} = 6.16$. Therefore, $6.17 - 6.16 = 0.010$ or $0.100\times 10^1$. We /lost/ 2 digits of significance! Our relative error is the following. 
+
+\begin{align*}
+  \left| \frac{\sqrt{38.1} - \sqrt{38} - 0.010}{\sqrt{38.1} - \sqrt{38}} \right| \approx 0.23.
+\end{align*}
+
+For a better approximation, multiply/divide by the conjugate expression.
+
+\begin{align*}
+  \left( \sqrt{38.1} - \sqrt{38}\right) \cdot \frac{\sqrt{38.1} + \sqrt{38}}{\sqrt{38.1} + \sqrt{38}}
+  &= \frac{0.1}{\sqrt{38.1} + \sqrt{38}} \approx 0.8130 \times 10^{-2}.
+\end{align*}
+
+The relative error in this case is:
+
+\begin{align*}
+  \left| \frac{\sqrt{38.1} - \sqrt{38} - 0.008130}{\sqrt{38.1} - \sqrt{38}} \right| \approx 0.003.
+\end{align*}
+
+That is a *large* error reduction.
+
+*** Example
+
+Consider $\ln{x} - 1$. There is an issue when $x\rightarrow e$, which causes loss of precision. A more accurate approximation would be $\ln{\left( x/e \right)}$. Moral is: it is always worth changing the equation using *identities* to produce a function that is more accurately approximated. We should /always/ try to remove subtraction when the operands are /nearly equal/.
+
+*** Example
+
+Write a stable code to find the roots of the quadratic equation.
+
+There are two cases depending on $b$, assuming $b^2 > 4ac$ (much greater).
+
+- If $b>0$, then $x_{}_{-}$ is okay. However, $x_+$ is nearly zero and must be fixed.
+
+  \begin{align*}
+    x_+ &= \frac{-b+\sqrt{b^2-4ac}}{2a} \cdot \frac{b+\sqrt{b^2-4ac}}{b+\sqrt{b^2-4ac}},\\
+    &= \frac{-2c}{b+\sqrt{b^2-4ac}}.
+  \end{align*}
+
+  This is a better approximation of $x_+$ in this case. 
+
+- If $b<0$, then $x_+$ is okay. However, $x_-$ is nearly zero and must be fixed.
+
+  \begin{align*}
+    x_- &= \frac{-b-\sqrt{b^2-4ac}}{2a} \cdot \frac{-b+\sqrt{b^2-4ac}}{-b+\sqrt{b^2-4ac}},\\
+    &= \frac{2c}{-b+\sqrt{b^2-4ac}}.
+  \end{align*}
+
+This is a better approximation of $x_-$ in this case.
+  
+** Operation Reduction
+
+Another method of reducing round-off error is by reducing the number of operations.
+
+*** Example
+
+Consider $f(x) = x^3 - 6.1 x^2 + 3.2 x + 1.5$ when $k=3$. Evaluate $f(4.71)$. The exact answer is $f(4.71)=-14.2638999$. To compute via a machine:
+
+\begin{align*}
+  f(4.71) &\approx F \cdot (F \cdot (F \cdot (F(F4.71)^3 - F( F6.1 (F4.71)^2)) + F(F3.2 (F4.71))) + F1.5),\\
+\end{align*}
+
+This is a mess, but the result is $f(4.71) \approx -13.4$ which is wrong. This is a $0.06$ relative error. A better approximation is done by repeatedly factoring $x$ to nested form. Doing so results in $f(4.71)\approx-14.3$ with a relative error of $0.0025$. 

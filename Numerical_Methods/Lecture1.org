@@ -1,0 +1,87 @@
+# Lecture 1
+
+For homework, can use any language I want.
+
+## Overview (Numerical Analysis/Methods) 
+
+Goal is to intro, analyze, implement may num. methods.
+
+1. Does it solve the problem?
+2. When does it go wrong?
+3. Number of operations needed? (Does the method converge at a reasonable time?)
+4. Speed.
+5. Size of error? (Difficult ?) $exact = apprx + err$. Exact is not given, thus difficult to find error.
+
+Therefore, we typically find the _upper bound_ for error where $0 \leq |err| \leq M$.
+
+6. Is it stable?
+
+## Section 1.1
+
+Notation: $C(X)$ is the set of all _continuous functions_ on the domain $X$. So if $X=[a,b]$ gives $C[a,b]$. $f\inC^n(X)$ means $f, f', \ldots, f^{(n)}$ are continuous on $X$. For $n=\infty$, $f$ is infinitely differentiable.
+
+### IVT
+
+Given $f\in C[a,b]$ and $K\in [f(a),f(b)]$, then $f(c)=K$ for $c\in(a,b)$.
+
+#### Exp
+
+$f(x)=x^3+x-1$ on $[0,1]$. Show $f$ has a root in $[0,1]$.
+
+Clearly $f$ is continuous s.t. $f\in C[0,1]$. $f(0)=-1< 0$ and $f(1)=1 > 0$. Thus, $f$ has a root.
+
+#### Exp
+
+S.t. $x=e^{-x}$ has a sol. Let $f(x) = x - e^{-x}$. Solving for $C[0,1]$ proves like above.
+
+### MVT
+
+Given $f\in f[a,b]$ and $f$ is diff. on $(a,b)$ then there is a number $c\in (a,b)$ s.t
+
+\(f'(c) = \frac{f(b)-f(a)}{b-a}\)
+
+More specifically, the is a derivative value within $(a,b)$ that is equal to the slope of the line from $a$ to $b$.
+
+### Rolle's Thm
+
+If $f(a)=f(b)$, then there is a extrema $c\in(a,b)$ s.t. $f'(c)=0$.
+
+#### Exp
+
+Show $x^3+x-1=0$ has a uniq. sol. on $[0,1]$.
+
+Suppose $0<c_1<c_2<1$ s.t. $f(c_1)=f(c_2)=0$. By Rolle's thm, there is $c\in(c_1,c_2)$ s.t. $f'(c)=0$. So $3c^2 + 1 = 0$ which is not possible. So $c_1=c_2$.
+
+### Extreme Value THM
+
+Given $f\in C[a,b]$, then $c_1,c_2\in [a,b]$ with $f(c_1)\leq f(x)\leq f(c_2)$. Additionally, if $f\in C'(a,b)$ then $c_1$ (min pt.) and $c_2$ (max pt.) occur at either the end pts $[a,b]$ or the critical pts ($f'=0$).
+
+#### Exp
+
+\(e^{-x}=1 - x + \frac{x^2}{2!} - \frac{x^3}{3!} + \cdots = \sum_{n=0}^\infty \frac{(-1)^n x^n}{n!}\)
+
+To solve this, it must be truncated to find an approx. So, let
+
+\(e^{-x}\approx 1-x\)
+
+Find $\max_{x\in[0,1]} |1-x-e{-x}|$. Let $f(x)=1-x-e^{-x}$ on $[0,1]$. $f\in C[0,1]$ and is once differentiable. 
+
+$f(0)=0$
+
+$f(1)=-e^{-1}$
+
+$f'(x)=-1+e^{-x}=0$ or $x=0$.
+
+Therefore the max is $e^{-1}\approx 0.36$. 
+
+### Taylor THM (p. 9, THM 1.14)
+
+If $f\in C^n [a,b]$ and $f^{(n+1)}$ exists on $(a,b)$ and $x_0\in [a,b]$. Then for any $x\in[a,b]$ there exists a number $x_0 < \xi < x$ with the following.
+
+$f(x)=P_n(x) + R_n(x)$ where 
+
+$P_n(x) = \sum_{k=0}^n \frac{f^{(k)} (x_0)}{k!} (x-x_0)^k = f(x_0) + f'(x_0)(x-x_0) + \ldots$.
+
+This is the n-th Taylor poly for $f$ about $x_0$.
+
+$R_n(x) = \frac{f^{(n+1)}(c)}{(n+1)!} (x-x_0)^{n+1}$ is the truncation/error/remainder term. 

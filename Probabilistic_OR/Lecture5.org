@@ -1,0 +1,148 @@
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [a4paper, 10pt]
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry} 
+#+LATEX_HEADER: \usepackage{amsmath,amsthm,amssymb,tensor,physics}
+#+LATEX_HEADER: \usepackage{setspace,multicol,tasks}
+#+LATEX_HEADER: \usepackage[shortlabels]{enumitem}
+#+LATEX_HEADER: \usepackage{fancyhdr}
+#+LATEX_HEADER: \usepackage{graphicx,hyperref}
+#+LATEX_HEADER: \setcounter{secnumdepth}{0}
+#+LATEX_HEADER: \setcounter{tocdepth}{2}
+#+title: MATH 4310: Lecture 4 
+#+author: Jalen Moore
+
+* Project - Generators
+
+** Surplus
+
+If $Q\geq D$, the cost is $1000\cdot Q$. The regret is $1000 Q - 1000 D$. This is the total cost minus the total demand. 
+
+** Defficient
+
+Otherwise, when $Q  < D$ the cost is $C=1000Q + 15000 (D - Q)$. The regret becomes $1000Q + 15000(D-Q) - 1000D = 14000(D-Q)$.
+
+** Maximum Regret
+
+The maximum regret is when there is a defficiency, as $14000(D-Q) > 1000(Q-D)$.
+
+** Other Notes
+
+Last question has no right/wrong answer, but must make sense.
+
+* Oil Drill/Survey Problem
+
+** Changing Expectation
+
+- $E[Payoff(Drill|USS)] = \frac{1}{7} (670K) + \frac{6}{7} ( - 130K ) = -15.7K$.
+- $E[Payoff(Drill|FSS)] = \frac{1}{2} \cdot (670K) + \frac{1}{2} (-130K) = 270K$.
+- $E[Payoff(Sell|USS)] = \frac{1}{7} (60K) + \frac{6}{7} (60k) = 60K$.
+- $E[Payoff(Sell|FSS)] = 60K$.
+
+Based on these findings, if the land is unfavorable it is better to sell. If the land is favorable, it is better to drill. (This is based on the above payoffs).
+
+** Should we even Experiment? 
+
+*** Expected Value of Perfect Information (EVPI)
+
+Assuming /certainty/, this is the upper bound value of potential experimentation.
+
+\begin{align*}
+  EVPI &= E[\text{Payoff w/ Perfect Info}] - E[\text{Payoff w/o Experimentation}];\\
+  E[\text{Payoff w/ Perfect Info}] &= P(\text{oil}) \cdot V(\text{best alt}) + P(\text{no oil})\cdot V(\text{best alt});\\
+  E[\text{Payoff w/o Experimentation}] &= V(\text{best alt and state}).
+\end{align*}
+
+*** Expected Value of Experimentation (EVE)
+
+Assuming /uncertainty/, determines the improvement in expected payoff.
+
+  \begin{align*}
+    EVE &= E[\text{Payoff w/ Experimentation}] - E[\text{Payoff w/o Experimentation}];\\
+    E[\text{Payoff w/ Experimentation}] &= P(FSS) \cdot V(\text{Best Payoff of *|FSS}) + P(FSS) \cdot V(\text{Best Payoff of *|USS}).
+  \end{align*}
+
+* Decision Trees
+
+- *Decisions (Square)*: Outputs alternatives.  The value of a decision is the dominant alternative value.
+- *Events (Circle)*: Outputs outcomes. The value of an event is its expected value.
+- Each branch are quantified by the cost they take. 
+
+  Analysis starts from /leaves/. At each event, calculate the expected value. At each decision, calculate the dominant alternative. $//$ denotes a dominant alternative. Analyzing the tree this way should give the dominant value of the tree, which guides are decision process.
+
+** Oil
+
+Sequence of Decisions/Events:
+
+#+begin_src org
+  Decision
+  ,* *Survey*
+
+    Event
+  ,** *USS* $0.7$ 
+
+      Decision
+  ,*** *Drill*
+
+        Event
+        - *Oil* $1/7$
+        - *No oil* $6/7$
+      - *Sell*
+        
+    - *FSS* $0.3$
+
+      Decision
+      - *Drill*
+
+        Event
+        - *Oil* $1/2$
+        - *No oil* $1/2$
+
+      - *Sell*
+
+  - *No survey*
+
+    Decision
+    - *Drill*
+
+      Event
+      - *Oil* $0.25$
+      - *No oil* $0.75$
+
+    - *Sell*
+#+end_src
+
+Decision
+- *Survey*
+
+  Event
+  - *USS* $0.7$ 
+
+    Decision
+    - *Drill*
+
+      Event
+      - *Oil* $1/7$
+      - *No oil* $6/7$
+    - *Sell*
+      
+  - *FSS* $0.3$
+
+    Decision
+    - *Drill*
+
+      Event
+      - *Oil* $1/2$
+      - *No oil* $1/2$
+
+    - *Sell*
+
+- *No survey*
+
+  Decision
+  - *Drill*
+
+    Event
+    - *Oil* $0.25$
+    - *No oil* $0.75$
+
+  - *Sell*

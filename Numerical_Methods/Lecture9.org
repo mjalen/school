@@ -1,0 +1,42 @@
+#+title: Lecture 9
+#+author: Jalen Moore
+
+* Newton's Method (Section 2.3)
+
+Advantages:
+- Fast
+- Can solve systems of equations using a vector valued function and its Jacobian.
+- Can find complex roots, if $p_0 \in\mathbb{C}$.
+
+Disadvantages:
+- $p_0$ must be close to $p$. If the slope moves opposite of the root, it will diverge.
+- Requires $f'$ or the Jacobian matrix (this matrix is expensive to calculate).
+- Requires $f'(p_{n-1})\neq 0$ for all $n=1,2,3,4\ldots$
+
+* Secant Method (Variation of Newton's Method)
+
+The idea is to use the limit definition to find a method without a derivative.
+
+\begin{align*}
+  p_n = p_{n-1} - \frac{(p_{n-1}-p_{n-2})\cdot f(p_{n-1})}{f(p_{n-1}) - f(p_{n-2})}.
+\end{align*}
+
+This method requires *TWO* initial guesses.
+
+Advantages:
+- Fast
+- Can be used to solve systems.
+
+Disadvantages:
+- Requires two good initial guesses.
+- The image of the initial guesses cannot be equal.
+
+* False Position Method (Combines Bisection + Secant)
+
+Computes Secant method, where the interval is our two guesses. As the algorithm continues, Bisection method checks are made to determine the next two inputs for the method.
+
+\begin{align*}
+  p_n = b_n - \frac{(b_n - a_n) f(b_n)}{f(b_n) - f(a_n)}.
+\end{align*}
+
+* Error Analysis of Methods (Section 2.4)

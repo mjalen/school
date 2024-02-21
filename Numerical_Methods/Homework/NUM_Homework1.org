@@ -1,0 +1,830 @@
+#+LATEX_CLASS: article
+#+LATEX_CLASS_OPTIONS: [a4paper, 10pt]
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry} 
+#+LATEX_HEADER: \usepackage{amsmath,amsthm,amssymb,tensor,physics}
+#+LATEX_HEADER: \usepackage{setspace,multicol,tasks}
+#+LATEX_HEADER: \usepackage[shortlabels]{enumitem}
+#+LATEX_HEADER: \usepackage{fancyhdr}
+#+LATEX_HEADER: \usepackage{graphicx,hyperref}
+#+LATEX_HEADER: \setcounter{secnumdepth}{0}
+#+OPTIONS: toc:nil
+#+title: MATH 4200 Homework 1 
+#+author: Jalen Moore
+
+* Section 1.1
+** Exercise 1.1#2A
+*** Question
+Show that the following equation has at least one solution in the given interval.
+
+\begin{align*}
+	\sqrt{x} - \cos{x} = 0, \left[ 0,1 \right].
+\end{align*}
+
+*** Answer
+Notice that $\sqrt{x}$ and $\cos{x}$ are both continuous for $[0,1]$. Therefore, let $f\in C[0,1]$ such that $f(x) = \sqrt{x} - \cos{x}$. Then,
+
+        \begin{align*}
+        	f(0) &= \sqrt{0} - \cos{0} = 0 - 1 = -1,\\
+        	f(1) &= \sqrt{1} - \cos{1} = 1 - 0.5403 = 0.4597.  
+        \end{align*}
+
+Thus by the Intermediate Value Theorem, there exists a root $c\in (0,1)$ such that $f(c)=0$.
+
+** Exercise 1.1#5A
+*** Question
+Find $\max_{a\leq x \leq b} | f(x) |$ for the following function and interval.
+
+\begin{align*}
+	f(x) = \frac{(2 - e^x + 2x)}{3}, [0,1]
+\end{align*}
+
+*** Answer
+
+The function $f(x)$ is given such that $f\in C[0,1]$. The derivative of $f(x)$ is $f'(x) = \frac{- e^x + 2}{3}$. Solving this derivative derives the following. 
+
+	\begin{align*}
+		0 &= \frac{- e^x + 2}{3},\\
+		0 &= - e^x + 2,\\
+		e^x &= 2,\\
+		x &= \ln{2}.
+	\end{align*}
+
+Therefore by the Extreme Value Theorem, the extrema must occur at $x\in \{ 0, \ln{2}, 1 \}$. Therefore,
+
+	\begin{align*}
+		f(0) &= \frac{[2 - e^0 + 2\cdot (0)]}{3} = \frac{1}{3},\\
+		f(\ln{2}) &= \frac{(2 - e^{\ln{2}} + 2\ln{2})}{3} \approx - 0.4621,\\ 
+		f(1) &= \frac{(2 - e^1 + 2\cdot (1))}{3} = \frac{4 -e^1}{3} \approx - 0.4272.
+	\end{align*}
+
+Thus, the absolute value of these possible extrema provides 
+
+	\begin{align*}
+		\max_{x\in [0,1]} \left| \frac{(2 - e^x + 2x)}{3} \right| = 0.4621.
+	\end{align*} 
+
+** Exercise 1.1#11
+*** Question
+
+Find the second Taylor polynomial $P_2(x)$ for the function $f(x)=e^x \cos{x}$ about $x_0 = 0$.
+
+- Use $P_2(0.5)$ to approximate $f(0.5)$. Find an upper bound for error $\left| f(0.5) - P_2(0.5) \right|$ using the error formula and compare it to the actual error.
+- Find a bound for the error $\left| f(x) - P_2(x) \right|$ in using $P_2(x)$ to approximate $f(x)$ on the interval $[0,1]$.
+- Approximate $\int_0^1 f(x) dx$ using $\int_0^1 P_2(x) dx$.
+- Find an upper bound for the error in (c) using $\int_0^1 \left| R_2(x) \dd{x} \right|$ and compare the bound to the actual error.
+ 
+*** Answer
+The second Taylor polynomial for $f(x)$ is
+
+	\begin{align*}
+		P_2(x) &= \sum_{k=0}^2 \frac{f^{(k)}(x_0)}{k!} (x - x_0)^k,\\
+			   &= e^{x_0} \cos{x_0}\\
+			   &+ e^{x_0} \left[ \cos{x_0} - \sin{x_0} \right] x\\
+			   &+ \frac{e^{x_0} \left[\cos{x_0} - \sin{x_0} - \sin{x_0} - \cos{x_0} \right]}{2} x^2,\\
+			   &= e^{x_0} \cos{x_0}\\
+			   &+ e^{x_0} \left[ \cos{x_0} - \sin{x_0} \right] x\\
+			   &- e^{x_0} \sin{x_0} x^2,\\
+			   &= 1 + \left[ 1 - 0  \right] x + 0 \cdot x^2,\\
+			   &= 1 + x.
+	\end{align*}
+
+Therefore, 
+
+**** Part A
+The actual and approximate values are 
+
+			\begin{align*}
+				f(0.5) &= e^{0.5} \cos{(0.5)} = 1.4468890366,\\
+				P_2(0.5) &= 1 + 0.5 = 1.5.
+			\end{align*}
+
+To find the upper bound error, the third derivative of $f$ is
+
+\begin{align*}
+        f^{(3)}(x) &= -2 e^{x} \left[ \sin{x} + \cos{x} \right]. 
+\end{align*}
+
+Therefore, the upper bound error is
+
+\begin{align*}
+        | f(0.5) - P_2(0.5) | &= | R_2 (0.5) |,\\
+        &\leq \frac{f^{(3)}(\xi)}{3!} (0.5 - 0)^{3},\\
+        &= \frac{-2 e^\xi \left[ \sin\xi + \cos\xi \right]}{6} (0.5)^3,\\
+        &\leq \max_\xi \frac{-2e^\xi \left[ \sin\xi + \cos\xi \right]}{6} \cdot 0.125,\\
+        &= \frac{-2 e^{0.5} \left[ \sin{0.5} + \cos{0.5} \right]}{6} \cdot 0.125,\\ 
+        &= 0.0932.
+\end{align*}
+
+The actual error is
+
+\begin{align*}
+        | f(0.5) - P_2(0.5) | &= | 1.446889 - 1.5 |,\\
+        &= | - 0.053111 |,\\
+        &= 0.053111.
+\end{align*}
+
+**** Part B
+The non-fixed upper bound error for $n=2$ is the following.
+
+    \begin{align*}
+            | f(x) - P_2(x) | &= | R_2 (x) |,\\
+            &= | \frac{f^{(3)}(\xi)}{3!} x^3 |,\\
+            &\leq \max_{\xi \in [0,1]} \max_{x\in [0, 1]} \left| \frac{f^{(3)}(\xi)}{3!} x^3 \right|,\\
+            &= \max_{\xi \in [0,1]} \max_{x\in [0, 1]} \left| \frac{-2 e^\xi \left[ \sin{\xi} + \cos{\xi} \right]}{6} x^3 \right|,\\ 
+            &= \max_{\xi \in [0,1]} \left| \frac{-2 e^\xi \left[ \sin{\xi} + \cos{\xi} \right]}{6} \right|,\\
+            &= 1.2520.
+    \end{align*}
+
+**** Part C
+
+\begin{align*}
+        \int_0^1 f(x) \dd{x} &\approx \int_0^1 P_2(x) \dd{x},\\
+        &= \int_0^1 1 + x \dd{x},\\
+        &= x + \frac{x^2}{2} \Bigm|_0^1,\\
+        &= \left( 1 + \frac{1}{2} \right) - 0,\\
+        &= 1.5.
+\end{align*}
+
+**** Part D 
+
+The upper bound error is 
+
+\begin{align*}
+        \left| \int_0^1 f(x) \dd{x} - \int_0^1 P_2(x) \dd{x} \right| &= \left| \int_0^1 R_2(x) \dd{x} \right|,\\
+        &= \left| \int_0^1 \frac{-2 e^\xi \left[ \sin{\xi} + \cos{\xi} \right]}{6} x^3 \dd{x} \right|,\\
+        &= \left| \frac{-2 e^\xi \left[ \sin{\xi} + \cos{\xi} \right]}{24} x^4 \Bigm|_0^1  \right|,\\
+        &= \left| \frac{-2 e^\xi \left[ \sin{\xi} + \cos{\xi} \right]}{24} \right|,\\
+        &\leq \max_{\xi\in[0,1]} \left| \frac{-2 e^\xi \left[ \sin{\xi} + \cos{\xi} \right]}{24} \right|,\\
+        &= 0.313.
+\end{align*}
+
+In contrast, the actual error is
+
+\begin{align*}
+        \left| \int_0^1 f(x) \dd{x} - \int_0^1 P_2(x) \dd{x} \right| 
+        &= \left| \int_0^1 e^x \cos{x} \dd{x} - 1.5 \right|,\\
+        &= \left| \frac{e^x \cos{x} + e^x \sin{x}}{2} \Bigm|_0^1 - 1.5 \right|,\\
+        &= \left| \frac{e^1 \cos{1} + e^1 \sin{1}}{2} - \frac{1}{2} - 1.5 \right|,\\
+        &= \left| 1.8780 - 2 \right|,\\
+        &= 0.1220.
+\end{align*}
+
+** Exercise 1.1#18
+*** Question 
+
+Let $f(x)=(1-x)^{-1}$ and $x_0=0$. Find the $n$-th Taylor polynomial $P_n(x)$ for $f(x)$ about $x_0$. Find a value of $n$ necessary for $P_n(x)$ to approximate $f(x)$ to within $10^{-6}$ on $[0, 0.5]$.
+
+*** Answer
+
+Explicitly deriving the first few derivatives of $f(x)$ yields:
+
+	\begin{align*}
+		f^{(0)}(x) &= (1-x)^{-1} = 0! (1-x)^{-1},\\
+		f^{(1)}(x) &= (1-x)^{-2} = 1! (1-x)^{-2},\\
+		f^{(2)}(x) &= 2(1-x)^{-3} = 2! (1-x)^{-3},\\
+		f^{(3)}(x) &= 6(1-x)^{-4} = 3! (1-x)^{-4},\\
+		f^{(4)}(x) &= 24(1-x)^{-5} = 4! (1-x)^{-5}\ldots
+	\end{align*}
+
+Therefore, from this pattern the formula for the $k$th derivative must be 
+
+	\begin{align*}
+		f^{(k)}(x) &= k! (1-x)^{-(k+1)}.
+	\end{align*}
+
+Therefore, the $n$-th Taylor polynomial is
+
+	\begin{align*}
+		P_n(x; x_0 = 0) &= \sum_{k=0}^n \frac{f^{(k)}(x_0)}{k!} (x - x_0)^k,\\
+		&= \sum_{k=0}^n (1-x_0)^{-(k+1)} (x - x_0)^k,\\
+		&= \sum_{k=0}^n 1^{-(k+1)} x^k,\\
+		&= \sum_{k=0}^n x^k.
+	\end{align*}
+
+The remainder is
+
+	\begin{align*}
+		R_n (x) &= \frac{f^{(n+1)}(\xi)}{(n+1)!} x^{n+1},\\
+				&= (1-\xi)^{-(n+2)} x^{n+1}.
+	\end{align*}
+
+To approximate $f(x)$ within $10^{-6}$, the following must be true
+
+	\begin{align*}
+		10^{-6} &\geq \left| f(x) - P_n (x) \right|,\\
+				&= \left| R_n (x) \right|,\\
+				&= \left| (1-\xi)^{-(n+2)} x^{n+1} \right|.
+	\end{align*}
+
+The upper bound error is then
+
+        \begin{align*}
+        	10^{-6} &\geq \max_{x\in [0,0.5]} \max_{\xi\in [0,0.5]} \left| (1-\xi)^{-(n+2)} x^{n+1} \right|,\\
+        	&= \max_{x\in [0,0.5]} \left| 1^{-(n+2)} x^{n+1} \right|,\\
+                &= \left| 0.5^{n+1} \right|,\\
+                &= 0.5^{n+1},\\
+                &= \frac{1}{2^{n+1}}.
+        \end{align*}
+
+For the inequality $1/2^{n+1} \leq 10^{-6}$ to be true, $n\geq 19$. Thus, $P_n(x) = \sum_{k=0}^{n} x^k$ for $n\geq 19$ approximates $f(x)$ within a maximum error of $10^{-6}$.
+
+* Section 1.2
+** Notation
+
+For this section, floating-point form is introduced. For the sake of conciseness, an operator notation of $fl(x) = Fx$ will be adopted. For example,
+
+\begin{align*}
+  fl(x) &= Fx,\\
+  fl(\sin{x}) &= F\sin{x},\\
+  fl(e^x) &= Fe^x,\\
+  fl(fl(x) \cdot fl(y)) &= F \cdot ( Fx + Fy ),\\
+  fl\left(\frac{fl(x) + fl(y)}{fl(z)}\right) &= F \cdot \frac{Fx + Fy}{Fz}.
+\end{align*}
+
+If this notation is not adopted, then there are simply too many $()$ and $[]$ to keep track of. This makes the many approximations easier to type and easier to read when there are many operations. 
+
+** Exercise 1.2#14
+*** Question 
+
+Let
+
+\( f(x) = \frac{e^x - e^{-x}}{x} \)
+
+1. Find $\lim_{x\rightarrow 0} f(x)$.
+2. Use three-digit rounding arithmetic to evaluate $f(0.1)$.
+3. Replace each exponential function wth its third Maclaurin polynomial and repeat part (2).
+4. The actual value is $f(0.1)=2.003335000$. Find the relative error for the values obtained in parts (2) and (3).
+
+*** Answer
+**** Part A
+
+\begin{align*}
+\lim_{x\rightarrow 0} \frac{e^x - e^{-x}}{x} &= \lim_{x\rightarrow 0} \frac{e^x + e^{-x}}{1},\\
+&= e^0+e^{-0},\\
+&= 1 + 1,\\
+&= 2.
+\end{align*}
+
+**** Part B
+
+The given $x=0.1$ is already rounded to three digits. To find $f(0.1)$, each result must be rounded. Therefore,
+
+\begin{align*}
+f(x) &\approx F \cdot \frac{F\cdot \left( F e^{Fx} - F e^{- Fx }\right)}{Fx}
+\end{align*}
+
+Thus,
+
+\begin{align*}
+  f(0.1) &\approx F\cdot \frac{ F \cdot \left( F e^{F 0.1} - F e^{- F 0.1} \right) }{F 0.1} ,\\
+  &\approx F \cdot \frac{F \cdot \left( F e^{0.1} - F e^{- 0.1} \right) }{0.1},\\
+  &\approx F \cdot \frac{F \cdot \left( F 1.105170918\ldots - F 0.9048374180\ldots \right) }{0.1},\\
+  &\approx F \cdot \frac{F \cdot \left( 0.111 \times 10^1 - 0.905 \right)}{0.1},\\
+  &\approx F \cdot \frac{F 0.205}{0.1},\\
+  &\approx F 2.05,\\
+  &\approx 0.205 \times 10^1. 
+\end{align*}
+
+**** Part C
+
+The Maclaurin polynomials for the exponential function are
+
+\begin{align*}
+e^x &\approx \sum_{k=0}^3 \frac{e^0}{k!} x^k,\\
+&\approx x + \frac{x^2}{2} + \frac{x^3}{6}.
+\end{align*}
+
+\begin{align*}
+e^{-x} &\approx \sum_{k=0}^3 \frac{(-1)^k e^0}{k!} x^k,\\
+&\approx -x + \frac{x^2}{2} - \frac{x^3}{6}.
+\end{align*}
+
+Then, the third-digit rounding arithmetic for $f(0.1)$ is the following.
+
+\begin{align*}
+  f(0.1) &\approx F\cdot \frac{ F \cdot \left( F e^{F 0.1} - F e^{- F 0.1} \right) }{F 0.1} ,\\
+  &\approx F \cdot \frac{F \cdot \left( F e^{0.1} - F e^{- 0.1} \right) }{0.1},\\
+  &\approx F \cdot \frac{F \cdot \left[
+      F\cdot\left( F0.1 + F\cdot \frac{F \cdot (F0.1)^2}{F2} + F\cdot \frac{ F\cdot (F0.1)^3}{F6} \right)
+      - F \cdot \left( - F(0.1) + F\cdot \frac{F \cdot (F0.1)^2}{F2} - F\cdot \frac{ F\cdot (F0.1)^3}{F6} \right)
+      \right] }{0.1},\\
+  &\approx F \cdot \frac{F \cdot \left[
+      F\cdot\left( 0.1 + F\cdot \frac{F \cdot 0.01}{F2} + F\cdot \frac{ F\cdot 0.001}{F6} \right)
+      - F \cdot \left( - 0.1 + F\cdot \frac{F \cdot 0.01}{F2} - F\cdot \frac{ F\cdot 0.001}{F6} \right)
+      \right] }{0.1},\\
+  &\approx F\cdot \frac{F \cdot \left[
+      F\cdot\left( 0.1 + F\cdot 0.005 + F\cdot 0.0001666\ldots \right)
+      - F \cdot \left( - 0.1 + F\cdot 0.005 - F\cdot 0.0001666\ldots \right)
+      \right] }{0.1},\\
+  &\approx F\cdot \frac{F \cdot \left[
+      F\cdot\left( 0.1 + 0.005\right)
+      - F \cdot \left( - 0.1 + 0.005 \right)
+      \right] }{0.1},\\
+  &\approx F\cdot \frac{F \cdot \left[
+      F\cdot 0.105 - F \cdot (-0.095)
+      \right] }{0.1},\\
+  &\approx F \cdot \frac{ F \cdot (0.2) }{0.1},\\
+  &\approx F \cdot 2,\\
+  &\approx 2.
+\end{align*}
+
+**** Part D
+
+The relative error for Part B is the following.
+
+\begin{align*}
+  \frac{|2.003335000 - 0.205 \times 10^1|}{|2.003335000|} &\approx 0.02329365782557585227 
+\end{align*}
+
+The relative error for Part C is the following.
+
+\begin{align*}
+  \frac{|2.003335000 - 2|}{|2.003335000|} &\approx 0.49916763796369553769  
+\end{align*}
+
+** Exercise 1.2#15A
+*** Question
+
+Use four-digit rounding arithmetic and the formulas (1.1), (1.2), and (1.3) to find the most accurate approximations to the roots of the following quadratic equation. Compute the absolute errors and relative errors.
+
+\begin{align*}
+\frac{1}{3}x^2 - \frac{123}{4} x + \frac{1}{6} = 0.
+\end{align*}
+
+*** Answer
+
+For convenience, the quadratic terms will be premptively rounded.
+
+\begin{align*}
+  a &= \frac{1}{3} \approx F\cdot 0.33333\ldots = 0.3333;\\
+  b &= -\frac{123}{4} \approx F \cdot (-30.75) = -30.75;\\
+  c &= \frac{1}{6} \approx F\cdot 0.16666\ldots = 0.1667.
+\end{align*}
+
+The squared and rounded discriminant of the given quadratic is the following.
+
+\begin{align*}
+  d &= \sqrt{b^2 - 4ac},\\
+  &\approx F\cdot \sqrt{F\cdot \left[F\cdot b^2 - F\cdot(F\cdot(4\cdot a)\cdot c)\right]},\\
+  &= F\cdot \sqrt{F\cdot \left[ F\cdot (-30.75)^2 - F\cdot(F\cdot(4\cdot 0.3333)\cdot 0.1667)\right]},\\
+  &= F\cdot \sqrt{F\cdot \left[ F\cdot (945.5625)- F\cdot(F\cdot(1.3332)\cdot 0.1667)\right]},\\
+  &= F\cdot \sqrt{ F\cdot \left[ 945.6 - F\cdot (1.333 \cdot 0.1667) \right]},\\
+  &= F\cdot \sqrt{ F\cdot \left[ 945.6 - F\cdot(0.2222111) \right]},\\
+  &= F\cdot \sqrt{ F\cdot \left[ 945.6 - 0.2222 \right]},\\
+  &= F\cdot \sqrt{ F\cdot [945.3778]},\\
+  &= F \cdot \sqrt{945.4},\\
+  &= F \cdot 30.74735761,\\
+  &= 30.75.
+\end{align*}
+
+Using formula (1.1), the roots are the following.
+
+\begin{align*}
+  x_1 &= \frac{-b + d}{2a},\\
+  &\approx F\cdot \frac{F\cdot (30.75 + 30.75)}{F (2\cdot 0.3333)},\\
+  &= F\cdot \frac{F 61.5}{F 0.6666},\\
+  &= F\cdot \frac{61.50}{0.6666},\\
+  &= F 92.25922\ldots,\\
+  &= 92.26.
+\end{align*}
+
+\begin{align*}
+  x_2 &= \frac{-b - d}{2a},\\
+  &\approx F\cdot \frac{F\cdot (30.75 - 30.75)}{F\cdot (2\cdot 0.3333)},\\
+  &= 0.
+\end{align*}
+
+In contrast, by formulas (1.2) and (1.3), the roots are the following.
+
+\begin{align*}
+  x_1 &= \frac{-2c}{b + d},\\
+  &\approx F\cdot \frac{F\cdot (-2 \cdot 0.1667)}{F\cdot (-30.75 + 30.75)},\\
+  &= \text{ undefined}. 
+\end{align*}
+
+\begin{align*}
+  x_2 &= \frac{-2c}{b - d},\\
+  &\approx F\cdot \frac{F\cdot (-2\cdot 0.1667)}{F\cdot (-30.75 - 30.75)},\\
+  &= F\cdot \frac{F\cdot (-0.3334)}{F\cdot (-61.5)},\\
+  &= F\cdot \frac{-0.3334}{-61.50},\\
+  &= F\cdot 0.0054211382,\\
+  &= 0.005421.
+\end{align*}
+
+In contrast, the actual roots are $x_1 = 92.24458$ and $x_2 = 0.0054203727$. Therefore, using the more accurate $x_1$ found using (1.1) and the more accurate $x_2$ found using (1.3), the absolute and relative errors are the following.
+
+\begin{align*}
+  \left| 92.24458 - 92.26 \right| &= 0.01542;\\
+  \frac{\left| 92.24458 - 92.26 \right|}{\left| 92.24458 \right|} &= 1.672 \times 10^{-4}.
+\end{align*}
+
+\begin{align*}
+  \left| 0.0054203727 - 0.005421 \right| &= 6.273 \times 10^{-7};\\
+  \frac{\left| 0.0054203727 - 0.005421 \right|}{\left| 0.0054203727 \right|} &= 1.1573 \times 10^{-4}.
+\end{align*}
+
+** Exercise 1.2#21
+*** Question
+
+Suppose two points $(x_0, y_0)$ and $(x_1, y_1)$ are on a straight line with $y_1\neq y_0$. Two formulas are abailable to find the $x$-intercept of the line:
+
+\begin{align*}
+x = \frac{x_0y_1 - x_1 y_0}{y_1 - y_0}
+\end{align*}
+
+and
+
+\begin{align*}
+  x = x_0 - \frac{(x_1 - x_0) y_0}{y_1 - y_0}.
+\end{align*}
+
+1. Show that both formulas are algebraically correct.
+2. Use the data $(x_0, y_0) = (1.31, 3.24)$ and $(x_1, y_1) = (1.93, 4.76)$ and three-digit rounding arithmetic to compute the $x$-intercept both ways. Which method is better, and why?
+
+*** Answer
+
+1. Starting from the first formula, the second can be derived.
+
+   \begin{align*}
+     \frac{x_0 y_1 - x_1 y_0}{y_1 - y_0} &= \frac{x_0 y_1 - x_0 y_0 + x_0 y_0 - x_1 y_0}{y_1 - y_0},\\
+     &= \frac{x_0y_1 - x_0y_0}{y_1 - y_0} + \frac{x_0 y_0 - x_1 y_0}{y_1 - y_0},\\
+     &= \frac{(y_1 - y_0)x_0}{y_1 - y_0} + \frac{(-x_1 + x_0) y_0}{y_1 - y_0},\\
+     &= x_0 - \frac{(x_1 - x_0)y_0}{y_1-y_0}.
+   \end{align*}
+
+2. The first formula follows from the givens.  
+
+   \begin{align*}
+     x &= \frac{x_0y_1 - x_1 y_0}{y_1 - y_0},\\
+     &\approx F\cdot \frac{F\cdot [F\cdot (Fx_0 \cdot Fy_1) - F\cdot (Fx_1 \cdot Fy_0)]}{F\cdot (Fy_1 - Fy_0)},\\
+     &\approx F\cdot \frac{F\cdot [F\cdot (F1.31 \cdot F4.76) - F\cdot (F1.93 \cdot F3.24)]}{F\cdot (F4.76 - F3.24)},\\
+     &\approx F\cdot \frac{F\cdot [F6.2356 - F6.2532]}{F1.52},\\
+     &\approx F\cdot \frac{F\cdot [6.24 - 6.25]}{1.52},\\
+     &\approx F \cdot \frac{F\cdot [-0.01]}{1.52},\\
+     &\approx F \cdot \frac{-0.010}{1.52},\\
+     &\approx F\cdot (-0.0065789474),\\
+     &\approx - 0.00658.
+   \end{align*}
+
+   The second formula follows from the givens.
+
+   \begin{align*}
+     x &= x_0 - \frac{(x_1 - x_0)y_0}{y_1 - y_0},\\
+     &\approx F \cdot \left[ Fx_0 - F\cdot \frac{F\cdot \left( [F\cdot (Fx_1 - Fx_0)] \cdot Fy_0 \right)}{F\cdot (Fy_1 - Fy_0)}\right],\\
+     &\approx F\cdot \left[ F1.31 - F\cdot \frac{F\cdot \left( [F\cdot (F1.93 - F1.31)] \cdot F3.24 \right)}{F\cdot (F4.76 - F3.24)}\right],\\
+     &\approx F\cdot \left[ 1.31 - F\cdot \frac{F\cdot \left( [F0.62] \cdot 3.24 \right)}{F1.52}\right],\\
+     &\approx F \cdot \left[ 1.31 - F\cdot \frac{F\cdot \left( 2.0088 \right)}{1.52}\right],\\
+     &\approx F \cdot \left[ 1.31 - F\cdot \frac{2.01}{1.52}\right],\\
+     &\approx F \cdot \left[ 1.31 - F\cdot (1.3223684211) \right],\\
+     &\approx F \cdot \left[ 1.31 - 1.32 \right],\\
+     &\approx F \cdot \left[ -0.01 \right],\\
+     &\approx -0.0100. 
+   \end{align*}
+
+   In contrast, the actual root is
+
+   \begin{align*}
+     x &= \frac{x_0y_1 - x_1y_0}{y_1 - y_0},\\
+     &= \frac{1.31\cdot4.76 - 1.93\cdot 3.24}{4.76 - 3.24},\\
+     &= \frac{6.2356 - 6.2532}{1.52},\\
+     &= \frac{-0.0176}{1.52},\\
+     &= -0.0115789474.
+   \end{align*}
+
+   The relative error for the first formula is the following.
+
+   \begin{align*}
+     \left| \frac{-0.0115789474 + 0.00658}{-0.0115789474} \right| = 0.4317272743.
+   \end{align*}
+
+   The relative error for the second formula is the following.
+
+   \begin{align*}
+     \left| \frac{-0.0115789474 + 0.00658}{-0.0100} \right| = 0.1363636387.
+   \end{align*}
+
+From the calculated errors, it is clear that formula two is the better approximation.
+   
+** Exercise 1.2#22
+*** Question
+
+The Taylor polynomial of degree $n$ for $f(x)=e^x$ is $\sum_{i=0}^n (x^i / i!)$. Use the Taylor polynomial of degree nine and three-digit chopping arithmetic to find an approximation to $e^{-5}$ by each of the following methods.
+
+1. 
+
+    \begin{align*}
+      e^{-5} \approx \sum_{i=0}^9 \frac{(-5)^i}{i!} = \sum_{i=0}^9 \frac{(-1)^i 5^i}{i!}.
+    \end{align*}
+
+2. 
+
+    \begin{align*}
+      e^{-5} = \frac{1}{e^5} \approx \frac{1}{\sum_{i=0}^9 \frac{5^i}{i!}}.
+    \end{align*}
+
+3. An approximate value of $e^{-5}$ correct to three digits is $6.74\times 10^{-3}$. Which formula, (1) or (2), gives the most accuracy, and why?
+
+*** Answer
+
+*NOTE*: I have chosen to evaluate operations until a rounding needs to occur. Also, I ommit $fl=F$ anywhere where $Fx = x$.  
+
+1. Solving method one yields the following.
+
+   \begin{align*}
+     e^{-5} &\approx \sum_{i=0}^9 \frac{(-1)^i 5^i}{i!},\\
+     &\approx 1 - 5 + \frac{5^2}{2!} - \frac{5^3}{3!} + \frac{5^4}{4!} - \frac{5^5}{5!} + \frac{5^6}{6!} - \frac{5^7}{7!} + \frac{5^8}{8!} - \frac{5^9}{9!},\\
+     &\approx 1 - 5 + \frac{25}{2} - \frac{125}{6} + \frac{625}{24} - \frac{F3125}{120} + \frac{F3125\cdot 5}{720} - \frac{F3125 \cdot 25}{5040} + \frac{F3125\cdot 125}{F40320} - \frac{F3125\cdot 625}{9\cdot F40320},\\
+     &\approx 1 - 5 + \frac{25}{2} - \frac{125}{6} + \frac{625}{24} - \frac{3120}{120} + \frac{3120\cdot 5}{720} - \frac{3120\cdot 25}{5040} + \frac{3120\cdot 125}{40300} - \frac{3120\cdot 625}{9 \cdot 40300},\\
+     &\approx 1 - 5 + \frac{25}{2} - \frac{125}{6} + \frac{625}{24} - \frac{3120}{120} + \frac{15600}{720} - \frac{78000}{5040} + \frac{390000}{40300} - \frac{1950000}{F362700},\\
+     &\approx 1 - 5 + \frac{25}{2} - \frac{125}{6} + \frac{625}{24} - \frac{3120}{120} + \frac{15600}{720} - \frac{78000}{5040} + \frac{390000}{40300} - \frac{1950000}{362000},\\
+     &\approx 1 - 5 + 12.5 - F20.833\ldots + F26.041666\ldots - 26\\
+     &+ F21.666\ldots - F15.47619\ldots + F9.677419\ldots - F5.38674\ldots,\\
+     &\approx 1 - 5 + 12.5 - 20.8 + 26.0 - 26 + 21.6 - 15.4 + 9.67 - 5.38,\\
+     &\approx -1.81.
+   \end{align*}
+
+2. in order to calculate method two, the denominator must be found. Therefore,
+
+   \begin{align*}
+     \sum_{i=0}^9 \frac{5^i}{i!} &\approx 1 + 5 + \frac{5^2}{2!} + \frac{5^3}{3!} + \frac{5^4}{4!} + \frac{5^5}{5!} + \frac{5^6}{6!} + \frac{5^7}{7!} + \frac{5^8}{8!} + \frac{5^9}{9!},\\
+     &\approx 1 + 5 + \frac{25}{2} + \frac{125}{6} + \frac{625}{24} + \frac{F3125}{120} + \frac{F3125\cdot 5}{720} + \frac{F3125 \cdot 25}{5040} + \frac{F3125\cdot 125}{F40320} + \frac{F3125\cdot 625}{9\cdot F40320},\\
+     &\approx 1 + 5 + \frac{25}{2} + \frac{125}{6} + \frac{625}{24} + \frac{3120}{120} + \frac{3120\cdot 5}{720} + \frac{3120\cdot 25}{5040} + \frac{3120\cdot 125}{40300} + \frac{3120\cdot 625}{9 \cdot 40300},\\
+     &\approx 1 + 5 + \frac{25}{2} + \frac{125}{6} + \frac{625}{24} + \frac{3120}{120} + \frac{15600}{720} + \frac{78000}{5040} + \frac{390000}{40300} + \frac{1950000}{F362700},\\
+     &\approx 1 + 5 + \frac{25}{2} + \frac{125}{6} + \frac{625}{24} + \frac{3120}{120} + \frac{15600}{720} + \frac{78000}{5040} + \frac{390000}{40300} + \frac{1950000}{362000},\\
+     &\approx 1 + 5 + 12.5 + F20.833\ldots + F26.041666\ldots + 26\\
+     &+ F21.666\ldots + F15.47619\ldots + F9.677419\ldots + F5.38674\ldots,\\
+     &\approx 1 + 5 + 12.5 + 20.8 + 26.0 + 26 + 21.6 + 15.4 + 9.67 + 5.38,\\
+     &\approx F112.9 + 15.4 + 9.67 + 5.38,\\
+     &\approx 112 + 15.4 + 9.67 + 5.38,\\
+     &\approx F127.4 + 9.67 + 5.38,\\
+     &\approx 127 + 9.67 + 5.38,\\
+     &\approx F137.07 + 5.38,\\
+     &\approx 137 + 5.38,\\
+     &\approx F142.38,\\
+     &\approx 142.
+   \end{align*}
+
+   Therefore, the inverse is the following.
+
+   \begin{align*}
+     e^{-5} &\approx \frac{1}{\sum_{i=0}^9 \frac{5^i}{i!}},\\
+     &\approx \frac{1}{142},\\
+     &\approx F0.0070422535,\\
+     &\approx 0.00704,\\
+     &= 7.04 \times 10^{-3}.
+   \end{align*}
+
+3. The resulting error of method one is the following.
+
+   \begin{align*}
+     \left| \frac{0.00674 + 1.81}{0.00674} \right| = 269.545994\ldots \approx 26955\%.
+   \end{align*}
+   
+The resulting error of method two is the following.
+
+   \begin{align*}
+     \left| \frac{6.74\times 10^{-3} - 7.04 \times 10^{-3}}{6.74\times 10^{-3}} \right| = 0.044510\ldots \approx 4.4510\%.
+   \end{align*}
+
+   This is a /dramatic/ difference in relative error. The reason for the error in method one is likely caused by cancelation error. This is opposed with method two, which includes no subtraction and no way to subtract nearly equal terms.
+
+** Exercise 1.2#23A
+*** Question
+
+The two-by-two linear system
+
+\begin{align*}
+  ax + by &= e,\\
+  cx + dy &= f.
+\end{align*}
+
+where $a,b,c,d,e,f$ are given, can be solved for $x$ and $y$ as follows:
+
+\begin{align*}
+  \text{set } m &= \frac{c}{a}, \text{ provided } a\neq 0;\\
+  d_1 &= d - mb;\\
+  f_1 &= f - me;\\
+  y &= \frac{f_1}{d_1};\\
+  x &= \frac{(e-by)}{a}.
+\end{align*}
+
+Solve the following linear system using four-digit rounding arithmetic.
+
+\begin{align*}
+  1.130x - 6.990y &= 14.20,\\
+  1.013x - 6.099y &= 14.22.
+\end{align*}
+
+*** Answer
+
+From the linear system, the following values can be extracted.
+
+\begin{align*}
+  a &= 1.130,\\
+  b &= -6.990,\\
+  c &= 1.013,\\
+  d &= -6.099,\\
+  e &= 14.20,\\
+  f &= 14.22.
+\end{align*}
+
+Then, following the described process gives the following values.
+
+\begin{align*}
+  m &= \frac{1.013}{1.130} = F0.896460177 \approx 0.8965;\\
+  d_1 &= -6.099 - 0.8965 \cdot (-6.990),\\
+  &\approx -6.099 + F6.266535,\\
+  &\approx -6.099 + 6.267,\\
+  &\approx 0.1680;\\
+  f_1 &= 14.22 - 0.8965 \cdot (14.20),\\
+  &\approx 14.22 - F12.7303,\\
+  &\approx 14.22 - 12.73,\\
+  &\approx 1.490.
+\end{align*}
+
+Thus, the values $x$ and $y$ are:
+
+\begin{align*}
+  y &= \frac{1.490}{0.1680},\\
+  &\approx F8.869047619,\\
+  &\approx 8.869;\\
+  x &= F\cdot \frac{F\cdot (14.20 - F \cdot (-6.990 \cdot 8.869))}{1.130},\\
+  &= F\cdot \frac{F\cdot(14.20 - F\cdot (-61.99431))}{1.130},\\
+  &= F\cdot \frac{F\cdot (14.20 + 61.99)}{1.130},\\
+  &= F\cdot \frac{F \cdot 76.19}{1.130},\\
+  &= F\cdot 67.4247787611,\\
+  &= 67.42.
+\end{align*}
+
+** Exercise 1.2#28
+*** Question
+
+Suppose that $Fy$ is a $k$ digit rounding approximation to $y$. Show that
+
+\begin{align*}
+  \left| \frac{y - Fy}{y} \right| \leq 0.5\times 10^{-k+1}.
+\end{align*}
+
+[ /Hint/ : If $d_{k+1}<5$, then $Fy = 0.d_1 d_2 \ldots d_k \times 10^n$, then $Fy = 0.d_1 d_2 \ldots d_k \times 10^n + 10^{n-k}$.]
+
+*** Answer
+
+There are two cases.
+
+1. Assume $d_{k+1}_{} < 5$. Then,
+
+\begin{align*}
+  \left| \frac{y - Fy}{y} \right| &= \left| \frac{0.d_1 d_2 \ldots d_k d_{k+1} \ldots \times 10^{n} - 0.d_1 d_2 \ldots d_k \times 10^n}{0.d_1 d_2 \ldots \times 10^n} \right|,\\
+  &= \frac{0.d_{k+1} d_{k+2} \ldots \times 10^{n-k}}{0.d_1 d_2 \ldots \times 10^n},\\
+  &\leq \frac{0.5\times 10^{-k}}{0.1},\\
+  &= 0.5\times 10^{-k+1}.
+\end{align*}
+
+2. Assume $d_{k+1} \geq 5$. Then,
+
+\begin{align*}
+  \left| \frac{y - Fy}{y} \right| &= \left| \frac{0.d_1 d_2 \ldots d_k d_{k+1} \ldots \times 10^{n} - 0.d_1 d_2 \ldots d_k \times 10^n}{0.d_1 d_2 \ldots \times 10^n} \right|,\\
+  &= \frac{10^{n-k} - 0.d_{k+1} d_{k+2} \ldots \times 10^{n-k}}{0.d_1 d_2 \ldots \times 10^n},\\
+  &\leq \frac{(1-0.5)\times 10^{-k}}{0.1},\\
+  &= 0.5\times 10^{-k+1}.
+\end{align*}
+
+The second equality holds due to the rounding of $Fy$.
+
+* Section 1.3
+** Exercise 1.3#6B
+*** Question
+
+Find the rates of convergence of the following sequence as $n\rightarrow\infty$.
+
+\begin{align*}
+  \lim_{n\rightarrow\infty} \sin{\frac{1}{n^2}} = 0.
+\end{align*}
+
+*** Answer
+
+To find the rate of convergence, first consider the following Taylor series truncated to $n=2$ at $x_0 = 0$.
+
+\begin{align*}
+  \sin{x} \approx \sin{x_0} + \cos{x_0} x - \sin{x_0} x^2 = x.
+\end{align*}
+
+Therefore, when $x = 1/n^2$, the rate of convergence can be found.
+
+\begin{align*}
+  \left| \frac{1}{n^2} - 0 \right| = \frac{1}{n^2}. 
+\end{align*}
+
+Thus, $\sin{\left(n^{^{-2}\right)}}= 0  + O (n^{-2})$.
+
+** Exercise 1.3#7C
+*** Question
+
+Find the rates of convergence of the following function as $h\rightarrow 0$.
+
+\begin{align*}
+  \lim_{h\rightarrow 0} \frac{\sin{h}-h\cos{h}}{h} = 0.
+\end{align*}
+
+*** Answer
+
+The Taylor series of $\cos{h}$ and $\sin{h}$ when truncated to $n=3$ are the following. 
+
+\begin{align*}
+  \cos{h} &\approx 1 - \frac{1}{2} h^2;\\
+  \sin{h} &\approx  h - \frac{1}{6} h^3.
+\end{align*}
+
+Therefore,
+
+\begin{align*}
+  \left| \frac{\sin{h} - h\cos{h}}{h} - 0 \right| &\approx \left| \frac{h - (1/6)h^3 - h\cdot [ 1 - (1/2) h^2 ]}{h} \right|,\\
+  &= \left| \frac{- (1/6)h^3 - (1/2) h^3}{h} \right|,\\
+  &= \left| -\frac{4}{6} h^2 \right|,\\
+  &\leq \frac{4}{6} h^2.
+\end{align*}
+
+Thus, the rate of convergence is $F(h) = 0 + O(h^2)$.
+
+** Exercise 1.3#8
+*** Question
+Suppose that $0<q<p$ and that $\alpha_n = \apha + O(n^{-p})$.
+
+**** Part A
+
+Show that $\alpha_n=\alpha+O(n^{-q})$.
+
+**** Part B
+
+Make a table listing $1/n$, $1/n^2$, $1/n^3$, and $1/n^4$ for $n=$  5,10,100, and 1000 and discuss the varying rates of convergence of these sequences as $n$ becomes large.
+
+*** Answer
+
+**** Part A
+
+Given that $0<q<p$, the following is true.
+
+\begin{align*}
+  \frac{1}{n^{p}} < \frac{1}{n^{q}}.
+\end{align*}
+
+Therefore,
+
+\begin{align*}
+\left| \alpha_n - \alpha \right| \leq K \frac{1}{n^{p}} < K \frac{1}{n^q}. 
+\end{align*}
+
+Thus, $\alpha_n = \alpha + O(n^{-q})$.
+
+**** Part B
+
+| $\beta_n$   | 5        | 10       | 100     | 1000    |
+|---------+----------+----------+---------+---------|
+| $1/n$   | $0.2$    | $0.1$    | $0.01$  | $0.001$ |
+| $1/n^2$ | $0.04$   | $0.01$   | $0.001$ | $10^{-6}$  |
+| $1/n^3$ | $0.008$  | $0.001$  | $10^{-6}$  | $10^{-9}$  |
+| $1/n^4$ | $0.0016$ | $0.0001$ | $10^{-8}$  | $10^{-12}$ |
+
+As $n$ becomes large, each sequence approaches $0$. The higher the power of the sequence, the faster the rate of convergence. Furthermore, it can be said that a higher power sequence is upper bounded by a lower power sequence such that given two positive integers $a$ and $b$ such that $a<b$, the following is true:
+
+\begin{align*}
+\frac{1}{n^a} = 0 + O\left(\frac{1}{n^b}\right).
+\end{align*}
+
+This is proven in Part A.
+
+** Exercise 1.3#9
+*** Question
+
+Suppose that $0<q<p$ and that $F(h)=L+O(h^p)$.
+
+**** Part A
+
+Show that $F(h) = L+O(h^q)$.
+
+**** Part B
+
+Make a table listing $h$, $h^2$, $h^3$, and $h^4$ for $h=$ 0.5, 0.1, 0.01, and 0.001 and discuss the varying rates of convergence of these powers of $h$ as $h$ approaches zero.
+
+***  Answer
+
+**** Part A
+
+Given $0<q<p$ and sufficiently small $h>0$ such that $F(h)=L+O(h^p)$, then $0<h^p < h^q$. Therefore,
+
+\begin{align*}
+  \left| F(h) - L \right| \leq K h^p \leq K h^q. 
+\end{align*}
+
+Thus, $F(h)=L+O(h^q)$.
+
+**** Part B
+
+| $F(h)$ | 0.5      | 0.1      | 0.01   | 0.001   |
+|--------+----------+----------+--------+---------|
+| $h$    | $0.5$    | $0.1$    | $0.01$ | $0.001$ |
+| $h^2$  | $0.25$   | $0.01$   | $10^{-4}$ | $10^{-6}$  |
+| $h^3$  | $0.125$  | $0.001$  | $10^{-6}$ | $10^{-9}$  |
+| $h^4$  | $0.0626$ | $0.0001$ | $10^{-8}$ | $10^{-12}$ |
+
+As $h$ becomes sufficiently small, each sequence approaches $0$. The rate of convergence increases as the power of the sequence increases.  
